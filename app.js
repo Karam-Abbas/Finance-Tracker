@@ -1,25 +1,24 @@
 const express = require('express');
-const app = express();
 const path = require('path');
-const indexRouter = require("./routes/index");
-const incomeRouter = require("./routes/income");
-const expensesRouter = require("./routes/expenses");
+const indexRouter = require('./routes/index');
+const incomeRouter = require('./routes/income');
+const expensesRouter = require('./routes/expenses');
+const db = require('./config/mongooseConnection');
 
+const app = express();
+const cors = require('cors');
+
+// Middleware
+app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const cors = require('cors');
-app.use(cors());
+// Routes
+app.use('/', indexRouter);
+app.use('/income', incomeRouter);
+app.use('/expenses', expensesRouter);
 
-
-app.get('/',indexRouter);
-app.get('/income',incomeRouter);
-app.get('/expenses',expensesRouter);
-
-
-app.listen("3000",()=>{
-    console.log("Server is running on port 3000");
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
 });
-
-
