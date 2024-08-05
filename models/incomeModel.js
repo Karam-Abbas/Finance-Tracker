@@ -23,6 +23,10 @@ const incomeSchema = mongoose.Schema({
         type: String,
         required: true,
         maxLength:30
+    },
+    sign:{
+        type: String,
+        default : '+'
     }
 });
 
