@@ -3,10 +3,18 @@ const jwt = require("jsonwebtoken");
 // Middleware to validate JWT token
 
 const generateToken = (user) => {
-  jwt.sign({
-    email:user.email,
-    id: user._id,
-  }, process.env.JWT_PRIVATE_KEY);
+  try {
+    return jwt.sign(
+      {
+        email: user.email,
+        id: user._id,
+      },
+      process.env.JWT_PRIVATE_KEY,
+      { algorithm: "ES256" }
+    );
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-module.exports = generateToken;
+module.exports = { generateToken };
