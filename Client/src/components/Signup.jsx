@@ -29,7 +29,7 @@ function Signup() {
               </p>
             </div>
             <div className="flex align-center justify-center">
-              <p className="textFieldInfo">Already have an account? <Link to="/login">Login</Link> instead.</p>
+              <p className="textFieldInfo">Already have an account? <Link to="/login" className="text-purple-700">Login</Link> instead.</p>
             </div>
           </div>
           <div className="flex items-center justify-center">

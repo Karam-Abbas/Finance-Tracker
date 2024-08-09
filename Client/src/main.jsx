@@ -12,8 +12,7 @@ import { Login, Signup, Layout } from "./components/index.js";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout/>}>
-      <Route path="" element={<Signup/>}/>
-      <Route path="login" element={<Login/>}/>
+      <Route path="" element={<App/>}/>
     </Route>
   )
 );

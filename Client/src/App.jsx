@@ -4,8 +4,10 @@ import Signup from "./components/Signup";
 function App() {
   return (
     <>
-    <Login/>
-    <Signup/>
+      <div className="flex flex-row h-screen w-full items-center justify-evenly">
+        <div></div>
+        <div></div>
+      </div>
     </>
   );
 }
