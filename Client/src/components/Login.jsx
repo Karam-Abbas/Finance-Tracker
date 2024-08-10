@@ -1,7 +1,6 @@
 import React from "react";
 import "../../public/stylesheets/LogIn.css";
-import { Link } from "react-router-dom";
-function Login() {
+function Login({ setToggle }) {
   return (
     <div className="mainContainer flex flex-col gap-4">
       <div className="flex flex-col gap-4">
@@ -24,7 +23,14 @@ function Login() {
           ></input>
         </div>
         <div className="flex align-center justify-center">
-          <p className="textFieldInfo">Don't have an account? <Link to='/' className="text-purple-700"> Signup </Link> instead.</p>
+          <p className="textFieldInfo">
+            Don't have an account?{" "}
+            <a onClick={()=>setToggle("Signup")} className="text-[--accent-color] cursor-pointer">
+              {" "}
+              Signup{" "}
+            </a>{" "}
+            instead.
+          </p>
         </div>
       </div>
       <div className="flex items-center justify-center">
@@ -33,11 +39,20 @@ function Login() {
         </button>
       </div>
       <div className="flex flex-col items-center justify-center gap-[1.2rem]">
-        <p className="text-2xl font-[Karla] font-bold text-[#667085] tracking-tight">Use Social Login</p>
+        <p className="text-2xl font-[Karla] font-bold text-[#667085] tracking-tight">
+          Use Social Login
+        </p>
         <div className="flex flex-row items-center justify-between gap-3 rounded-md  w-full">
-          <button className="flex p-3 items-center justify-center gap-3 border-solid border-[1px] border-gray-600 rounded-md w-24 "><img src="../../public/images/google.svg" alt="" /></button>
-          <button className="flex p-3 items-center justify-center gap-3 w-24 rounded-md bg-blue-600"><img src="../../public/images/fb.svg" alt="" /></button>
-          <button className="flex p-3 items-center justify-center gap-3 w-24 rounded-md bg-black"><img src="../../public/images/apple.svg" alt="" /></button>
+        <button className="hover:scale-110">
+            <img src="/images/google.svg" alt="" />
+          </button>
+          <button className="hover:scale-110">
+            <img src="/images/fb.svg" alt="" />
+          </button >
+          <button className="hover:scale-110">
+            <img src="/images/apple.svg
+            " alt="" />
+          </button>
         </div>
       </div>
     </div>

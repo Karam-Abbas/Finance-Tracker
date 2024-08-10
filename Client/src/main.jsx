@@ -8,11 +8,12 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
-import { Login, Signup, Layout } from "./components/index.js";
+import {Layout } from "./components/index.js";
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Layout/>}>
-      <Route path="" element={<App/>}/>
+    <Route path="/" element={<App/>}>
+      <Route path="/Entry" element ={<></>} />
+    <Route path="/layout" element={<Layout/>} />
     </Route>
   )
 );

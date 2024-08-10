@@ -4,18 +4,30 @@
   --accent-color: #dc1ac6; 
   --placeholder-color: #667085;
   --main-background:white;
+  --containers-background:white;
+  --drop-shadow:black;
 }
+
+[data-theme="dark"] {
+  --primary-color: #d9e2ec;      /* Lightened for contrast */
+--secondary-color: #4ade80;    /* A lighter shade of green */
+--accent-color: #f1a7d0;       /* A lighter shade of pink */
+--placeholder-color: #a0a8b1;   /* Light gray for placeholders */
+--main-background: #1c1f2a;    /* Dark background */
+--containers-background: #2a2d3e; /* Slightly lighter for containers */
+--drop-shadow: rgba(0, 0, 0, 0.5); /* Soft black for shadows */
+}
+
 
 *{
   background-color: var(--main-background);
 }
 
 .mainContainer {
-  height: 31rem;
   width: 25rem;
   padding: 1.5rem;
   border-radius: 0.75rem;
-  background-color: var(--main-background);
+  background-color: var(--containers-background);
   filter: drop-shadow(15px 13px 25px rgba(0, 0, 0, 0.25));
 }
 
@@ -34,7 +46,7 @@
   border-radius: 0.5rem;
   border: 1px solid #ccc;
   outline: none;
-  background: url("../../public/stylesheets/images/mail.svg") no-repeat 0.6rem
+  background: url("/images/mail.svg") no-repeat 0.6rem
     center;
 }
 
@@ -45,7 +57,7 @@
   border-radius: 0.5rem;
   border: 1px solid #ccc;
   outline: none;
-  background: url("../../public/stylesheets/images/passcode.svg") no-repeat
+  background: url("/images/passcode.svg") no-repeat
     0.6rem center;
 }
 
