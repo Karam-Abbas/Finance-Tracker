@@ -1,7 +1,7 @@
 :root {
   --primary-color: #344054;
   --secondary-color: #1adc30;
-  --accent-color: #dc1ac6; 
+  --accent-color: #371adc; 
   --placeholder-color: #667085;
   --main-background:white;
   --containers-background:white;
@@ -10,12 +10,12 @@
 
 [data-theme="dark"] {
   --primary-color: #d9e2ec;      /* Lightened for contrast */
---secondary-color: #4ade80;    /* A lighter shade of green */
---accent-color: #f1a7d0;       /* A lighter shade of pink */
+--secondary-color: #34c548;    /* A lighter shade of green */
+--accent-color: #988dfd;       /* A lighter shade of pink */
 --placeholder-color: #a0a8b1;   /* Light gray for placeholders */
 --main-background: #1c1f2a;    /* Dark background */
 --containers-background: #2a2d3e; /* Slightly lighter for containers */
---drop-shadow: rgba(0, 0, 0, 0.5); /* Soft black for shadows */
+--drop-shadow: rgba(0, 0, 0, 1); /* Soft black for shadows */
 }
 
 
@@ -37,6 +37,7 @@
   align-items: flex-start;
   gap: 6px;
   align-self: stretch;
+  background-color: var(--containers-background);
 }
 
 .email {
@@ -67,6 +68,7 @@
 
 .textFieldHeading {
   color: var(--primary-color);
+  background-color: var(--containers-background);
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
@@ -76,6 +78,7 @@
 
 .textFieldInfo {
   color: var(--primary-color);
+  background-color: var(--containers-background);
   font-family: Inter;
   font-size: 14px;
   font-style: normal;

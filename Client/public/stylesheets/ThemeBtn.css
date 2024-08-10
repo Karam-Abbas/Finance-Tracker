@@ -1,0 +1,43 @@
+.toggle-container {
+    position: relative;
+}
+
+/* Hide the checkbox input */
+.toggle-input {
+    display: none;
+}
+
+/* Style for the label that represents the toggle switch */
+.toggle-label {
+    width: 50px;
+    height: 30px;
+    background-color: #ccc;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+}
+
+/* Style for the round switch inside the toggle */
+.toggle-label::before {
+    content: '';
+    width: 26px;
+    height: 26px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s ease;
+}
+
+/* Change the background color and position of the round switch when checked */
+.toggle-input:checked + .toggle-label {
+    background-color: #4CAF50;
+}
+
+.toggle-input:checked + .toggle-label::before {
+    transform: translateX(20px);
+}

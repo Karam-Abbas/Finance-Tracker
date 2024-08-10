@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import "../../public/stylesheets/ThemeBtn.css";
 const ThemeSwitch = () => {
   const getCurrentTheme = () =>
     window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -22,13 +22,19 @@ const ThemeSwitch = () => {
   };
 
   return (
-    <div>
-      <label>
-        <input type="checkbox" checked={theme} onChange={toggleTheme} />
-        {theme ? 'Switch to Day Mode' : 'Switch to Night Mode'}
-      </label>
+    <div className="toggle-container flex items-center justify-center">
+        <span><img src="/images/sun.png" alt="" /></span>
+        <input 
+            type="checkbox" 
+            id="toggle" 
+            className="toggle-input" 
+            checked={theme} 
+            onChange={toggleTheme}
+        />
+        <label htmlFor="toggle" className="toggle-label"></label>
+        <span><img src="/images/moon.png" alt="" /></span>
     </div>
-  );
+);
 };
 
 export default ThemeSwitch;
