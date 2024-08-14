@@ -1,19 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
+import { Layout,App,Dashboard,Entry } from "./components/index.js";
 import "./index.css";
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  RouterProvider,
-  Route,
-} from "react-router-dom";
-import {Layout } from "./components/index.js";
+import {createBrowserRouter,createRoutesFromElements,RouterProvider,Route,} from "react-router-dom";
+
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App/>}>
-      <Route path="/Entry" element ={<></>} />
-    <Route path="/layout" element={<Layout/>} />
+    <Route path="/" element={<Layout />}>
+      <Route path="entry" element={<Entry/>} />
+      <Route path="dashboard" element={<Dashboard />} />
     </Route>
   )
 );

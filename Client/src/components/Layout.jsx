@@ -4,9 +4,7 @@ import { Header,Footer} from "./index.js";
 function Layout() {
   return (
     <>
-      <Header />
       <Outlet />
-      <Footer />
     </>
   );
 }
