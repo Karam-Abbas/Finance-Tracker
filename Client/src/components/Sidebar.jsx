@@ -18,8 +18,9 @@ const Sidebar = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col ">
-          <div className="pt-10">
+        <div className="flex flex-col justify-between h-full">
+
+          <div className="pt-9">
             <div className="flex flex-row gap-3 items-center justify-start hover:border-[--primary-color] hover:border-l-2 hover:px-2 hover:scale-105 hover:transition-all duration-100">
               <img src="../../public/images/chart-histogram.svg" className="" />
               <a className="text-lg font-medium text-[--primary-color] hover: cursor-pointer">
@@ -45,6 +46,7 @@ const Sidebar = () => {
               </a>
             </div>
           </div>
+
           <div className="flex flex-row gap-3 items-center justify-start hover:border-[--primary-color] hover:border-l-2 hover:px-2 hover:scale-105 hover:transition-all duration-100">
             <img src="../../public/images/fi-rs-sign-out.svg" className="" />
             <a
@@ -54,6 +56,7 @@ const Sidebar = () => {
               Logout
             </a>
           </div>
+
         </div>
       </div>
     </>
