@@ -1,11 +1,12 @@
 :root {
   --primary-color: #344054;
   --secondary-color: #1adc30;
-  --accent-color: #371adc; 
+  --accent-color: #1E88E5; 
   --placeholder-color: #667085;
-  --main-background:white;
-  --containers-background:white;
+  --main-background:#F5F5F5;
+  --containers-background:#F5F5F5;
   --drop-shadow:black;
+  --danger:red;
 }
 
 [data-theme="dark"] {
@@ -16,11 +17,17 @@
 --main-background: #1c1f2a;    /* Dark background */
 --containers-background: #2a2d3e; /* Slightly lighter for containers */
 --drop-shadow: rgba(0, 0, 0, 1); /* Soft black for shadows */
+--danger: #fa5b59; 
 }
 
 
 *{
   background-color: var(--main-background);
+}
+
+html,* {
+  margin: 0;
+  padding: 0;
 }
 
 .mainContainer {

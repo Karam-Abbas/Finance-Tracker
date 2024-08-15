@@ -9,6 +9,7 @@ export default {
       fontFamily: {
         karla: ['Karla', 'sans-serif'],
         lato: ['Lato', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
     },
   },
   plugins: [],
