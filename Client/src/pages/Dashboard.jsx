@@ -1,7 +1,7 @@
 import React from "react";
-import { Sidebar } from "./index.js";
-import '../../public/stylesheets/Dashboard.css'
-import '../../public/stylesheets/LogIn.css'
+import { Sidebar } from "../components/index.js";
+import "../../public/stylesheets/Dashboard.css";
+import "../../public/stylesheets/LogIn.css";
 
 const Dashboard = () => {
   return (
@@ -73,46 +73,94 @@ const Dashboard = () => {
           <table>
             <thead>
               <tr>
-                <th className="border border-x-0 border-y border-[--primary-color] p-2 ">Date</th>
-                <th className="border border-x-0 border-y border-[--primary-color] p-2 ">Name</th>
-                <th className="border border-x-0 border-y border-[--primary-color] p-2 ">Amount</th>
+                <th className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  Date
+                </th>
+                <th className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  Name
+                </th>
+                <th className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  Amount
+                </th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">kasdafs</td>
-                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">dafasdf</td>
-                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">fasdfa</td>
+                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  kasdafs
+                </td>
+                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  dafasdf
+                </td>
+                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  fasdfa
+                </td>
               </tr>
               <tr>
-                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">kasdafs</td>
-                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">dafasdf</td>
-                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">fasdfa</td>
+                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  kasdafs
+                </td>
+                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  dafasdf
+                </td>
+                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  fasdfa
+                </td>
               </tr>
               <tr>
-                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">kasdafs</td>
-                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">dafasdf</td>
-                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">fasdfa</td>
+                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  kasdafs
+                </td>
+                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  dafasdf
+                </td>
+                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  fasdfa
+                </td>
               </tr>
               <tr>
-                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">kasdafs</td>
-                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">dafasdf</td>
-                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">fasdfa</td>
+                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  kasdafs
+                </td>
+                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  dafasdf
+                </td>
+                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  fasdfa
+                </td>
               </tr>
               <tr>
-                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">kasdafs</td>
-                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">dafasdf</td>
-                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">fasdfa</td>
+                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  kasdafs
+                </td>
+                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  dafasdf
+                </td>
+                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  fasdfa
+                </td>
               </tr>
               <tr>
-                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">kasdafs</td>
-                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">dafasdf</td>
-                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">fasdfa</td>
+                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  kasdafs
+                </td>
+                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  dafasdf
+                </td>
+                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  fasdfa
+                </td>
               </tr>
               <tr>
-                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">kasdafs</td>
-                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">dafasdf</td>
-                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">fasdfa</td>
+                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  kasdafs
+                </td>
+                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  dafasdf
+                </td>
+                <td className="border border-x-0 border-y border-[--primary-color] p-2 ">
+                  fasdfa
+                </td>
               </tr>
             </tbody>
           </table>

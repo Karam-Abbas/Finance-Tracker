@@ -1,13 +1,13 @@
-import Header from "./Header";
-import Footer from "./Footer";
-import Layout from "./Layout";
-import Login from "./Login";
-import Signup from "./Signup";
-import Dashboard from "./Dashboard";
-import Sidebar from "./Sidebar";
-import ThemeSwitch from "./ThemeSwitch";
 import App from "./App";
 import Entry from "./Entry";
+import Footer from "./Footer";
+import Header from "./Header";
+import Layout from "./Layout";
+import Login from "./Login";
+import Sidebar from "./Sidebar";
+import Signup from "./Signup";
+import ThemeSwitch from "./ThemeSwitch";
+
 export {
   Header,
   Login,
@@ -15,7 +15,6 @@ export {
   Layout,
   Footer,
   ThemeSwitch,
-  Dashboard,
   Sidebar,
   App,
   Entry
