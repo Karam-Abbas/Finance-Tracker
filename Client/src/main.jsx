@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Layout, Entry } from "./components/index.js";
-import { Dashboard,Transaction } from "./pages/index.js";
+import { Layout, Entry,In } from "./components/index.js";
+import { Dashboard, Transaction, Incomes, Expenses } from "./pages/index.js";
 import "./index.css";
 import {
   createBrowserRouter,
@@ -13,9 +13,13 @@ import {
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
-      <Route path="entry" element={<Entry />} />
-      <Route path="dashboard" element={<Dashboard />} />
-      <Route path="transactions" element={<Transaction />} />
+      <Route path="/entry" element={<Entry />} />
+      <Route path="/in" element={<In />}>
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="transactions" element={<Transaction />} />
+        <Route path="incomes" element={<Incomes />} />
+        <Route path="expenses" element={<Expenses />} />
+      </Route>
     </Route>
   )
 );

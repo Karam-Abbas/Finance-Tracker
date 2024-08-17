@@ -1,6 +1,7 @@
 import React from "react";
 import "../../public/stylesheets/Sidebar.css";
 import "../../public/stylesheets/LogIn.css";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
@@ -22,27 +23,27 @@ const Sidebar = () => {
           <div className="pt-9">
             <div className="flex flex-row gap-3 items-center justify-start hover:border-[--primary-color] hover:border-l-2 hover:px-2 hover:scale-105 hover:transition-all duration-100">
               <img src="../../public/images/chart-histogram.svg" className="" />
-              <a className="text-lg font-normal text-[--primary-color] hover: cursor-pointer">
+              <Link to="/in/dashboard" className="text-lg font-normal text-[--primary-color] hover: cursor-pointer">
                 Dashboard
-              </a>
+              </Link>
             </div>
             <div className="flex flex-row gap-3 items-center justify-start hover:border-[--primary-color] hover:border-l-2 hover:px-2 hover:scale-105 hover:transition-all duration-100">
               <img src="../../public/images/credit-card.svg" className="" />
-              <a className="text-lg font-normal text-[--primary-color] hover: cursor-pointer">
+              <Link to="/in/transactions" className="text-lg font-normal text-[--primary-color] hover: cursor-pointer">
                 Transactions
-              </a>
+              </Link>
             </div>
             <div className="flex flex-row gap-3 items-center justify-start hover:border-[--primary-color] hover:border-l-2 hover:px-2 hover:scale-105 hover:transition-all duration-100">
               <img src="../../public/images/money.svg" className="" />
-              <a className="text-lg font-normal text-[--primary-color] hover: cursor-pointer">
+              <Link to="/in/incomes" className="text-lg font-normal text-[--primary-color] hover: cursor-pointer">
                 Incomes
-              </a>
+              </Link>
             </div>
             <div className="flex flex-row gap-3 items-center justify-start hover:border-[--primary-color] hover:border-l-2 hover:px-2 hover:scale-105 hover:transition-all duration-100">
               <img src="../../public/images/sad.svg" className="" />
-              <a className="text-lg font-normal text-[--primary-color] hover: cursor-pointer">
+              <Link  to="/in/expenses" className="text-lg font-normal text-[--primary-color] hover: cursor-pointer">
                 Expenses
-              </a>
+              </Link>
             </div>
           </div>
 

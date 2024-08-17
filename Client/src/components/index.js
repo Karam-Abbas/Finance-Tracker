@@ -7,6 +7,9 @@ import Login from "./Login";
 import Sidebar from "./Sidebar";
 import Signup from "./Signup";
 import ThemeSwitch from "./ThemeSwitch";
+import In from "./In";
+import History from "./History";
+import MiniHistory from "./MiniHistory";
 
 export {
   Header,
@@ -17,5 +20,8 @@ export {
   ThemeSwitch,
   Sidebar,
   App,
-  Entry
+  Entry,
+  In,
+  History,
+  MiniHistory
 };
