@@ -1,5 +1,4 @@
 import App from "./App";
-import Entry from "./Entry";
 import Footer from "./Footer";
 import Header from "./Header";
 import Layout from "./Layout";
@@ -20,7 +19,6 @@ export {
   ThemeSwitch,
   Sidebar,
   App,
-  Entry,
   In,
   History,
   MiniHistory

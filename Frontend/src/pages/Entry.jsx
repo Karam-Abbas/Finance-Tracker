@@ -1,4 +1,4 @@
-import { Login, Signup, ThemeSwitch } from "./index.js";
+import { Login, Signup, ThemeSwitch } from "../components/index.js";
 import { useState } from "react";
 import "../../public/stylesheets/LogIn.css";
 

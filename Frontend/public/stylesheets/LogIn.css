@@ -1,31 +1,31 @@
 :root {
   --primary-color: #344054;
   --secondary-color: #1adc30;
-  --accent-color: #1E88E5; 
+  --accent-color: #1e88e5;
   --placeholder-color: #667085;
-  --main-background:#F5F5F5;
-  --containers-background:#F5F5F5;
-  --drop-shadow:black;
-  --danger:red;
+  --main-background: #f5f5f5;
+  --containers-background: #f5f5f5;
+  --drop-shadow: black;
+  --danger: red;
 }
 
 [data-theme="dark"] {
-  --primary-color: #d9e2ec;      /* Lightened for contrast */
---secondary-color: #34c548;    /* A lighter shade of green */
---accent-color: #988dfd;       /* A lighter shade of pink */
---placeholder-color: #a0a8b1;   /* Light gray for placeholders */
---main-background: #1c1f2a;    /* Dark background */
---containers-background: #2a2d3e; /* Slightly lighter for containers */
---drop-shadow: rgba(0, 0, 0, 1); /* Soft black for shadows */
---danger: #fa5b59; 
+  --primary-color: #d9e2ec; /* Lightened for contrast */
+  --secondary-color: #34c548; /* A lighter shade of green */
+  --accent-color: #988dfd; /* A lighter shade of pink */
+  --placeholder-color: #a0a8b1; /* Light gray for placeholders */
+  --main-background: #1c1f2a; /* Dark background */
+  --containers-background: #2a2d3e; /* Slightly lighter for containers */
+  --drop-shadow: rgba(0, 0, 0, 1); /* Soft black for shadows */
+  --danger: #fa5b59;
 }
 
-
-*{
+* {
   background-color: var(--main-background);
 }
 
-html,* {
+html,
+* {
   margin: 0;
   padding: 0;
 }
@@ -54,8 +54,17 @@ html,* {
   border-radius: 0.5rem;
   border: 1px solid #ccc;
   outline: none;
-  background: url("/images/mail.svg") no-repeat 0.6rem
-    center;
+  background: url("/images/mail.svg") no-repeat 0.6rem center;
+}
+
+.name {
+  color: var(--primary-color);
+  width: 100%;
+  padding: 0.5rem 0.5rem 0.5rem 2.6rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  outline: none;
+  background: url("/images/fi-rr-smile.svg") no-repeat 0.6rem center;
 }
 
 .password {
@@ -65,8 +74,7 @@ html,* {
   border-radius: 0.5rem;
   border: 1px solid #ccc;
   outline: none;
-  background: url("/images/passcode.svg") no-repeat
-    0.6rem center;
+  background: url("/images/passcode.svg") no-repeat 0.6rem center;
 }
 
 .textField input::placeholder {

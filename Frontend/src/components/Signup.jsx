@@ -4,7 +4,17 @@ function Signup({ setToggle }) {
   return (
     <div className="mainContainer flex flex-col gap-4">
       <div className="flex flex-col gap-4 bg-[--containers-background]">
-        <div className="textField">
+      <div className="textField">
+      <div className="textField">
+          <div className="textFieldHeading">Name</div>
+          <input
+            type="email"
+            name=""
+            className="name"
+            placeholder="Karam Abbas"
+          ></input>
+        </div>
+        
           <div className="textFieldHeading">Email</div>
           <input
             type="email"
@@ -13,6 +23,7 @@ function Signup({ setToggle }) {
             placeholder="karam@financetracker.com"
           ></input>
         </div>
+        
         <div className="textField">
           <div className="textFieldHeading">Password</div>
           <input
