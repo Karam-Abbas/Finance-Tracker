@@ -45,6 +45,7 @@ html,
   gap: 6px;
   align-self: stretch;
   background-color: var(--containers-background);
+
 }
 
 .email {

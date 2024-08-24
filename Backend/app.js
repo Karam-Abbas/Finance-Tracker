@@ -2,7 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 
-const cors = require("cors");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 
@@ -14,7 +13,6 @@ const db = require("./config/mongooseConnection");
 const dbgr = require("debug")("development:App.js");
 
 // Middleware
-app.use(cors());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
