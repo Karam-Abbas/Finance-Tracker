@@ -1,6 +1,7 @@
 import React from "react";
 import "../../public/stylesheets/LogIn.css";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 function Signup({ setToggle }) {
   const [name, setName] = useState("");
@@ -8,13 +9,14 @@ function Signup({ setToggle }) {
   const [password, setPassword] = useState("");
 
   useEffect(() => {}, [name, email, password]);
-
+  const navigate = useNavigate();
   const handleSignup = async (e) => {
     e.preventDefault();
     const userData = { name, email, password };
     try {
       const response = await axios.post("/user/register", userData);
       console.log(response.data);
+      navigate("/in/dashboard");
     } catch (error) {
       console.log(error);
     }
@@ -56,7 +58,19 @@ function Signup({ setToggle }) {
               className="password"
               placeholder="***********"
               required
+              minLength={8}
+              maxLength={16}
             ></input>
+            {password.length < 8 && password.length > 0 && (
+              <div style={{ color: "red" }}>
+                Password must be at least 8 characters long.
+              </div>
+            )}
+            {password.length > 20 && (
+              <div style={{ color: "red" }}>
+                Password must not exceed 20 characters.
+              </div>
+            )}
             <p className="textFieldInfo">
               The password must be 8-16 characters long, with at least one
               special character and number.

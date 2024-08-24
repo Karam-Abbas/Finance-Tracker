@@ -21,7 +21,9 @@ const userSchema = mongoose.Schema({
     required: true,
     minLength: 8,
     trim:true,
-  }
+  },
+  incomes: [{ type: mongoose.Schema.Types.ObjectId, ref: "income" }],
+  expenses: [{ type: mongoose.Schema.Types.ObjectId, ref: "expenses" }]
 });
 
 

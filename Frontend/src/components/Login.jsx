@@ -1,18 +1,21 @@
 import React from "react";
 import "../../public/stylesheets/LogIn.css";
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 function Login({ setToggle }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   useEffect(() => {}, [email, password]);
 
+  const navigate = useNavigate();
   const handleLogin = async (e) => {
     e.preventDefault();
     const userData = { email, password };
     try {
       const response = await axios.post("/user/login", userData);
       console.log(response.data);
+      navigate("/in/dashboard");
     } catch (error) {
       console.log(error);
     }
