@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const incomeModel = require("../models/incomeModel");
 const expensesModel = require("../models/expensesModel");
-router.get("/", async function (req, res) {
+router.get("/getAll", async function (req, res) {
   let total_expenses = 0,
     total_income = 0,
     netTotal = 0;

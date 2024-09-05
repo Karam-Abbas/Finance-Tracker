@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const expensesModel = require("../models/expensesModel");
-router.get("/", async (req, res) => {
+router.get("/getExpenses", async (req, res) => {
   const expenses = await expensesModel.find({});
   let total_expenses = 0;
   expenses.map((expense) => (total_expenses += expense.amount));

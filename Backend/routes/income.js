@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const incomeModel = require("../models/incomeModel");
-router.get("/",async (req, res) => {
+router.get("/getIncomes",async (req, res) => {
   const incomes = await incomeModel.find({});
   let total_income = 0;
   incomes.map((income)=>total_income += income.amount);

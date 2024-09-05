@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../public/stylesheets/Dashboard.css";
 import "../../public/stylesheets/LogIn.css";
 import { History } from "../components/index";
 const Dashboard = () => {
+  const [balance , setBalance] = useState(0);
+  const [expenses , setExpenses] = useState(0);
+  const [incomes , setIncomes] = useState(0);
+  const [transactions, setTransactions] = useState([]);
+  // Start from here 
   return (
       <div className="border-x border-y border-solid border-[--primary-color] h-[56rem] w-full mr-3 p-5">
         <div className="flex flex-row items-center justify-center gap-3">
