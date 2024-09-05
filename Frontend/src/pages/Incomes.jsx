@@ -4,22 +4,23 @@ import "../../public/stylesheets/Dashboard.css";
 import "../../public/stylesheets/LogIn.css";
 
 const Incomes = () => {
-  const [title,setTitle] = useState();
-  const [amount,setAmount] = useState();
-  const [date,setDate] = useState();
-  const [category,setCategory] = useState();
-  const [description,setDescription] = useState();
-  useEffect(()=>{},[ title, amount, date,category,description ]);
-  const formHandler = async(e) =>{
-    e.preventDefault();
-    const userData = { title, amount, date,category,description };
-    try {
-    const response = await axios.post("/income/addIncome",userData );
-    console.log(response.data); 
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+  // const [title,setTitle] = useState();
+  // const [amount,setAmount] = useState();
+  // const [date,setDate] = useState();
+  // const [category,setCategory] = useState();
+  // const [description,setDescription] = useState();
+  // useEffect(()=>{},[ title, amount, date,category,description ]);
+  // const formHandler = async(e) =>{
+  //   e.preventDefault();
+  //   const userData = { title, amount, date,category,description };
+  //   try {
+  //   const response = await axios.post("/income/addIncome",userData );
+  //   console.log(response.data); 
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
+  const formHandler=()=>{};
   return (
     <div className="border-x border-y border-solid border-[--primary-color] h-[56rem] w-full mr-3 p-5 flex flex-col items-center">
       <div className="flex flex-row items-center justify-center w-3/4 border-x border-y border-[--placeholder-color] border-solid p-2">

@@ -1,38 +1,35 @@
 const express = require("express");
 const router = express.Router();
-router.get("/getAll", async function (req, res) {
-  let total_expenses = 0,
-    total_income = 0,
-    netTotal = 0;
-  const user = req.user;
+const userModel = require("../models/userModel");
+const { isLoggedIn } = require("../middlewares/isLoggedIn");
+
+router.get("/getAll", isLoggedIn, async (req, res) => {
   try {
-    await user.populate("incomes").populate("expenses");
+    let user = await userModel
+      .findOne({ email: req.user.email })
+      .populate("incomes")
+      .populate("expenses");
+    if (!user) {
+      return res.status(404).send({ error: "User not found" });
+    }
 
-    user.incomes.forEach((income) => {
-      total_income += income.amount;
-    });
+    const total_income = user.incomes.reduce((acc, income) => acc + income.amount,0);
+    const total_expenses = user.expenses.reduce((acc, expense) => acc + expense.amount,0);
 
-    user.expenses.forEach((expense) => {
-      total_expenses += expense.amount;
-    });
+    const netTotal = total_income - total_expenses;
 
-    netTotal = total_income - total_expenses;
     const transactions = [...user.incomes, ...user.expenses];
-    //sorting the transactions on the basis of dates
-    transactions.sort((a, b) => {
-        return new Date(a.date) - new Date(b.date);
-    });
+    transactions.sort((a, b) => new Date(a.date) - new Date(b.date));
 
-    res.send({
+    res.json({
       netTotal,
       total_expenses,
       total_income,
       transactions,
     });
   } catch (error) {
-    console.error("Error populating user data:", error);
+    console.error("Error fetching user data:", error);
     res.status(500).send({ message: "Internal Server Error" });
   }
 });
-
 module.exports = router;

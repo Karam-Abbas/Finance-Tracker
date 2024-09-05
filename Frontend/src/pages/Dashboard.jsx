@@ -11,11 +11,11 @@ const Dashboard =() => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/getAll");
+        const response = await axios.get("/index/getAll");
         setNetTotal(response.data.netTotal);
         setTotalExpenses(response.data.total_expenses);
         setTotalIncome(response.data.total_income);
-        console.log(response.data.netTotal, response.data.total_expenses);
+        console.log(response.data);
       } catch (error) {
         console.log(error);
       }

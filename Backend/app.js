@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Routes
-app.use("/", indexRouter);
+app.use("/index", indexRouter);
 app.use("/user", userRouter);
 app.use("/income", incomeRouter);
 app.use("/expenses", expensesRouter);
