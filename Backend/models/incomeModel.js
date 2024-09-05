@@ -27,6 +27,11 @@ const incomeSchema = mongoose.Schema({
     sign:{
         type: String,
         default : '+'
+    },
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user',
+        required: true
     }
 });
 

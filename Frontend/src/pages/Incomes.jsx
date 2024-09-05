@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { MiniHistory } from "../components/index.js";
 import "../../public/stylesheets/Dashboard.css";
 import "../../public/stylesheets/LogIn.css";
 
 const Incomes = () => {
+  const [title,setTitle] = useState();
+  const [amount,setAmount] = useState();
+  const [date,setDate] = useState();
+  const [category,setCategory] = useState();
+  const [description,setDescription] = useState();
+  useEffect(()=>{},[ title, amount, date,category,description ]);
+  const formHandler = async(e) =>{
+    e.preventDefault();
+    const userData = { title, amount, date,category,description };
+    try {
+    const response = await axios.post("/income/addIncome",userData );
+    console.log(response.data); 
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <div className="border-x border-y border-solid border-[--primary-color] h-[56rem] w-full mr-3 p-5 flex flex-col items-center">
       <div className="flex flex-row items-center justify-center w-3/4 border-x border-y border-[--placeholder-color] border-solid p-2">
@@ -17,7 +33,9 @@ const Incomes = () => {
         </div>
       </div>
       <div className="flex flex-row items-center justify-evenly w-3/4 h-full">
-        <div className="flex flex-col items-center justify-center h-full p-5 gap-2 w-1/2 text-[--primary-color]">
+        <form
+        onSubmit={formHandler} 
+        className="flex flex-col items-center justify-center h-full p-5 gap-2 w-1/2 text-[--primary-color]">
           <input
             type="text"
             name="title"
@@ -58,7 +76,7 @@ const Incomes = () => {
           <div className=" w-3/4">
             <button type="submit" className=" px-3 py-3 rounded-lg text-white bg-[--accent-color] hover:scale-105">+ Add Income</button>
           </div>
-        </div>
+        </form>
         <div className="w-1/2">
         <MiniHistory />
         </div>
