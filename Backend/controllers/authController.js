@@ -37,7 +37,7 @@ const loginUser = async (req, res) => {
       if (!isMatch)
         return res
           .status(400)
-          .send({ message: "Invalid username or password!" });
+          .send({ message: "Invalid password!" });
 
       let token = await generateToken(user);
 
@@ -50,7 +50,7 @@ const loginUser = async (req, res) => {
 };
 const logoutUser = (req, res) => {
   res.cookie("userToken", "");
-  res.send("Redirect this to the login page");
+  res.send({ message: "Logged out successfully"});
 };
 
 module.exports = { registerUser, loginUser, logoutUser };
