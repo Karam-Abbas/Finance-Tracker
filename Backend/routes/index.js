@@ -20,7 +20,7 @@ router.get("/getAll", isLoggedIn, async (req, res) => {
 
     const transactions = [...user.incomes, ...user.expenses];
     transactions.sort((a, b) => new Date(a.date) - new Date(b.date));
-
+    console.log(transactions);
     res.json({
       netTotal,
       total_expenses,

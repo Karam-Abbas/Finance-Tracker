@@ -1,82 +1,72 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "../../public/stylesheets/Dashboard.css";
 import "../../public/stylesheets/LogIn.css";
 
 const History = () => {
   const [transactions, setTransactions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("/index/getAll");
         setTransactions(response.data.transactions);
-        console.log(response.data);
       } catch (error) {
-        console.log(error);
+        console.error(error);
+        setError("Failed to fetch transactions.");
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
   }, []);
-  const display = () => {
-    transactions.forEach((transaction) => {
-      if (transaction.sign === "+") {
-        return (
-          <tr>
-            <td className="border border-x-0 border-y border-[--primary-color] p-2 text-red-600">
-              {transaction.date}
-            </td>
-            <td className="border border-x-0 border-y border-[--primary-color] p-2 text-red-600">
-              {transaction.title}
-            </td>
-            <td className="border border-x-0 border-y border-[--primary-color] p-2 text-red-600">
-              {transaction.amount}
-            </td>
-            <td className="border border-x-0 border-y border-[--primary-color] p-2 text-red-600">
-              {transaction.category}
-            </td>
-          </tr>
-        );
-      } else if (transaction.sign === "-") {
-        return (
-          <tr>
-            <td className="border border-x-0 border-y border-[--primary-color] p-2 text-green-600">
-              {transaction.date}
-            </td>
-            <td className="border border-x-0 border-y border-[--primary-color] p-2 text-green-600">
-              {transaction.name}
-            </td>
-            <td className="border border-x-0 border-y border-[--primary-color] p-2 text-green-600">
-              {transaction.amount}
-            </td>
-            <td className="border border-x-0 border-y border-[--primary-color] p-2 text-green-600">
-              {transaction.type}
-            </td>
-          </tr>
-        );
-      }
-    });
+
+  const renderTransactionRow = (transaction) => {
+    const { date, title, amount, category, sign } = transaction;
+    const isIncome = sign === "+";
+    
+    return (
+      <tr key={transaction._id}>
+        <td className={`border border-x-0 border-y border-[--primary-color] p-2 ${isIncome ? 'text-green-600':'text-red-600'}`}>
+          {date}
+        </td>
+        <td className={`border border-x-0 border-y border-[--primary-color] p-2 ${isIncome ? 'text-green-600':'text-red-600'}`}>
+          {isIncome ? title : transaction.name}
+        </td>
+        <td className={`border border-x-0 border-y border-[--primary-color] p-2 ${isIncome ? 'text-green-600':'text-red-600'}`}>
+          {amount}
+        </td>
+        <td className={`border border-x-0 border-y border-[--primary-color] p-2 ${isIncome ? 'text-green-600':'text-red-600'}`}>
+          {isIncome ? category : transaction.type}
+        </td>
+      </tr>
+    );
   };
+
   const fullDisplay = () => {
+    if (loading) {
+      return <p>Loading...</p>;
+    }
+
+    if (error) {
+      return <p className="text-red-500">{error}</p>;
+    }
+
     if (transactions.length > 0) {
       return (
         <div className="table_component">
           <table className="w-3/4">
             <thead>
               <tr>
-                <th className="border border-x-0 border-y border-[--primary-color] p-2 text-xl font-lato">
-                  Date
-                </th>
-                <th className="border border-x-0 border-y border-[--primary-color] p-2 text-xl font-lato">
-                  Name
-                </th>
-                <th className="border border-x-0 border-y border-[--primary-color] p-2 text-xl font-lato">
-                  Amount
-                </th>
-                <th className="border border-x-0 border-y border-[--primary-color] p-2 text-xl font-lato">
-                  Type
-                </th>
+                <th className="border border-x-0 border-y border-[--primary-color] p-2 text-xl font-lato">Date</th>
+                <th className="border border-x-0 border-y border-[--primary-color] p-2 text-xl font-lato">Name</th>
+                <th className="border border-x-0 border-y border-[--primary-color] p-2 text-xl font-lato">Amount</th>
+                <th className="border border-x-0 border-y border-[--primary-color] p-2 text-xl font-lato">Type</th>
               </tr>
             </thead>
-            <tbody>{display()}</tbody>
+            <tbody>{transactions.map(renderTransactionRow)}</tbody>
           </table>
         </div>
       );
@@ -90,6 +80,7 @@ const History = () => {
       );
     }
   };
+
   return (
     <div>
       <div className="flex items-center justify-center text-5xl font-medium font-inter p-5 ">
