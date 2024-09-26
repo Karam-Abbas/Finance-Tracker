@@ -3,7 +3,7 @@ import axios from "axios";
 import "../../public/stylesheets/Dashboard.css";
 import "../../public/stylesheets/LogIn.css";
 
-const History = () => {
+const History = (props) => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -20,25 +20,47 @@ const History = () => {
         setLoading(false);
       }
     };
-    fetchData();
-  }, []);
+
+    if (props.list && props.list.length > 0) {
+      setTransactions(props.list);
+      setLoading(false);
+    } else {
+      fetchData();
+    }
+  }, [props.list]);
 
   const renderTransactionRow = (transaction) => {
     const { date, title, amount, category, sign } = transaction;
     const isIncome = sign === "+";
-    
+
     return (
       <tr key={transaction._id}>
-        <td className={`border border-x-0 border-y border-[--primary-color] p-2 ${isIncome ? 'text-green-600':'text-red-600'}`}>
+        <td
+          className={`border border-x-0 border-y border-[--primary-color] p-2 ${
+            isIncome ? "text-green-600" : "text-red-600"
+          }`}
+        >
           {date}
         </td>
-        <td className={`border border-x-0 border-y border-[--primary-color] p-2 ${isIncome ? 'text-green-600':'text-red-600'}`}>
+        <td
+          className={`border border-x-0 border-y border-[--primary-color] p-2 ${
+            isIncome ? "text-green-600" : "text-red-600"
+          }`}
+        >
           {isIncome ? title : transaction.name}
         </td>
-        <td className={`border border-x-0 border-y border-[--primary-color] p-2 ${isIncome ? 'text-green-600':'text-red-600'}`}>
+        <td
+          className={`border border-x-0 border-y border-[--primary-color] p-2 ${
+            isIncome ? "text-green-600" : "text-red-600"
+          }`}
+        >
           {amount}
         </td>
-        <td className={`border border-x-0 border-y border-[--primary-color] p-2 ${isIncome ? 'text-green-600':'text-red-600'}`}>
+        <td
+          className={`border border-x-0 border-y border-[--primary-color] p-2 ${
+            isIncome ? "text-green-600" : "text-red-600"
+          }`}
+        >
           {isIncome ? category : transaction.type}
         </td>
       </tr>
@@ -60,10 +82,18 @@ const History = () => {
           <table className="w-3/4">
             <thead>
               <tr>
-                <th className="border border-x-0 border-y border-[--primary-color] p-2 text-xl font-lato">Date</th>
-                <th className="border border-x-0 border-y border-[--primary-color] p-2 text-xl font-lato">Name</th>
-                <th className="border border-x-0 border-y border-[--primary-color] p-2 text-xl font-lato">Amount</th>
-                <th className="border border-x-0 border-y border-[--primary-color] p-2 text-xl font-lato">Type</th>
+                <th className="border border-x-0 border-y border-[--primary-color] p-2 text-xl font-lato">
+                  Date
+                </th>
+                <th className="border border-x-0 border-y border-[--primary-color] p-2 text-xl font-lato">
+                  Name
+                </th>
+                <th className="border border-x-0 border-y border-[--primary-color] p-2 text-xl font-lato">
+                  Amount
+                </th>
+                <th className="border border-x-0 border-y border-[--primary-color] p-2 text-xl font-lato">
+                  Type
+                </th>
               </tr>
             </thead>
             <tbody>{transactions.map(renderTransactionRow)}</tbody>
