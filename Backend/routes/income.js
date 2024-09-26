@@ -22,7 +22,7 @@ router.post("/addIncome", isLoggedIn, async (req, res) => {
     }
 
     const { title, amount, date, category, description } = req.body;
-    if (!title || !amount || !date || !category) {
+    if (!title || !amount || !category) {
       return res.status(400).send({ error: "All fields are required" });
     }
 
@@ -34,6 +34,9 @@ router.post("/addIncome", isLoggedIn, async (req, res) => {
       description,
       userId: user._id,
     });
+
+    user.incomes.push(income._id);
+    await user.save();
     res.status(201).send(income);
   } catch (error) {
     console.error(error);
