@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { MiniHistory } from "../components/index.js";
 import axios from "axios"; // Ensure axios is imported
 import "../../public/stylesheets/Dashboard.css";
@@ -12,7 +12,8 @@ const Incomes = () => {
     category: 'Other', // Default category
     description: ''
   });
-  
+  const [totalIncome , setTotalIncome]= useState(0);
+  const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -57,6 +58,21 @@ const Incomes = () => {
     }
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/index/getAll");
+        setTotalIncome(response.data.total_income);
+        setTransactions(response.data.transactions);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+
+
   return (
     <div className="border-x border-y border-solid border-[--primary-color] h-[56rem] w-full mr-3 p-5 flex flex-col items-center">
       <div className="flex flex-row items-center justify-center w-3/4 border-x border-y border-[--placeholder-color] border-solid p-2">
@@ -65,7 +81,7 @@ const Incomes = () => {
             Total Income:{" "}
           </span>{" "}
           <span className="text-3xl text-[--accent-color] font-bold">
-            Rs10000
+            Rs{totalIncome}
           </span>
         </div>
       </div>
@@ -132,7 +148,7 @@ const Incomes = () => {
           </div>
         </form>
         <div className="w-1/2">
-          <MiniHistory />
+          <MiniHistory list={transactions}/>
         </div>
       </div>
     </div>
