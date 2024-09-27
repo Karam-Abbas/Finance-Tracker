@@ -28,34 +28,13 @@ const Expenses = () => {
   const formHandler = async (e) => {
     e.preventDefault();
 
-    // Basic validation
     if (!formData.title || !formData.amount || !formData.date) {
       setError("Please fill in all required fields.");
       return;
     }
 
     setLoading(true);
-    setError(null); 
-
-    try {
-      const response = await axios.post("/expenses/addExpense", formData);
-
-      setFormData({
-        title: "",
-        amount: "",
-        date: "",
-        category: "Other",
-        description: "",
-      });
-    } catch (error) {
-      console.error(error.message);
-      setError("An error occurred while submitting the form.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
+    setError(null);
     const fetchData = async () => {
       try {
         const response = await axios.get("/index/getAll");
@@ -66,8 +45,31 @@ const Expenses = () => {
         console.log(error);
       }
     };
-    fetchData();
+
+    try {
+      await axios.post("/expenses/addExpense", formData);
+
+      setFormData({
+        title: "",
+        amount: "",
+        date: "",
+        category: "Other",
+        description: "",
+      });
+
+      fetchData(); 
+    } catch (error) {
+      console.error(error.message);
+      setError("An error occurred while submitting the form.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData(); 
   }, []);
+
   return (
     <div className="border-x border-y border-solid border-[--primary-color] h-[56rem] w-full mr-3 p-5 flex flex-col items-center">
       <div className="flex flex-row items-center justify-center w-3/4 border-x border-y border-[--placeholder-color] border-solid p-2">
@@ -136,7 +138,7 @@ const Expenses = () => {
             rows="4"
           />
           {error && <p className="text-red-500">{error}</p>}
-          <div className=" w-3/4">
+          <div className="w-3/4">
             <button
               type="submit"
               disabled={loading}
