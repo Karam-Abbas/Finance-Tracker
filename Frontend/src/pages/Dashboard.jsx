@@ -23,6 +23,13 @@ const Dashboard = () => {
     };
     fetchData();
   }, []);
+  const formatAmount = (amount) => {
+    const suffixes = ['', 'k', 'M', 'B', 'T'];
+    const suffixIndex = Math.floor(Math.log10(Math.abs(amount)) / 3);
+    const formattedAmount = (amount / Math.pow(10, suffixIndex * 3)).toFixed(2);
+    return `${formattedAmount}${suffixes[suffixIndex]}`;
+  };
+
   let minIncome = Infinity;
   let maxIncome = -Infinity;
   let minExpense = Infinity;
@@ -60,7 +67,7 @@ const Dashboard = () => {
             Net Balance
           </div>
           <div className="text-5xl text-[--accent-color] font-medium font-lato">
-            Rs {netTotal}
+            Rs {formatAmount(netTotal)}
           </div>
         </div>
         <div className="flex flex-col items-center justify-end gap-2 border-x border-y border-solid border-[--primary-color] px-8 py-5 rounded-lg">
@@ -68,7 +75,7 @@ const Dashboard = () => {
             Net Expenses
           </div>
           <div className="text-5xl text-[--accent-color] font-medium font-lato">
-            Rs {total_expenses}
+            Rs {formatAmount(total_expenses)}
           </div>
         </div>
         <div className="flex flex-col items-center justify-end gap-2 border-x border-y border-solid border-[--primary-color] px-8 py-5 rounded-lg">
@@ -76,7 +83,7 @@ const Dashboard = () => {
             Net Incomes
           </div>
           <div className="text-5xl text-[--accent-color] font-medium font-lato">
-            Rs {total_income}
+            Rs {formatAmount(total_income)}
           </div>
         </div>
       </div>
@@ -88,10 +95,10 @@ const Dashboard = () => {
         </div>
         <div className="flex flex-row items-center justify-between w-3/4 border-x border-y border-[--placeholder-color] border-solid p-2">
           <span className="text-3xl font-medium font-inter text-[--placeholder-color]">
-            Rs  {minIncome}
+            Rs  {formatAmount(minIncome)}
           </span>
           <span className="text-3xl font-medium font-inter text-[--placeholder-color]">
-            Rs {maxIncome}
+            Rs {formatAmount(maxIncome)}
           </span>
         </div>
       </div>
@@ -103,10 +110,10 @@ const Dashboard = () => {
         </div>
         <div className="flex flex-row items-center justify-between w-3/4 border-x border-y border-[--placeholder-color] border-solid p-2">
           <span className="text-3xl font-medium font-inter text-[--placeholder-color]">
-            Rs {minExpense}
+            Rs {formatAmount(minExpense)}
           </span>
           <span className="text-3xl font-medium font-inter text-[--placeholder-color]">
-            Rs {maxExpense}
+            Rs {formatAmount(maxExpense)}
           </span>
         </div>
       </div>

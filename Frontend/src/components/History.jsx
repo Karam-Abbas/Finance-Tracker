@@ -29,8 +29,27 @@ const History = (props) => {
     }
   }, [props.list]);
 
+  const formatDate = (isoString) => {
+    const date = new Date(isoString);
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long', // 'short' for abbreviated month names
+      day: 'numeric',
+    });
+  };
+
+  const formatAmount = (amount) => {
+    const suffixes = ['', 'k', 'M', 'B', 'T'];
+    const suffixIndex = Math.floor(Math.log10(Math.abs(amount)) / 3);
+    const formattedAmount = (amount / Math.pow(10, suffixIndex * 3)).toFixed(2);
+    return `${formattedAmount}${suffixes[suffixIndex]}`;
+  };
+
   const renderTransactionRow = (transaction) => {
     const { date, title, amount, category, sign } = transaction;
+
+    const formattedDate = formatDate(date);
+    const formattedAmount = formatAmount(amount);
     const isIncome = sign === "+";
 
     return (
@@ -40,7 +59,7 @@ const History = (props) => {
             isIncome ? "text-green-600" : "text-red-600"
           }`}
         >
-          {date}
+          {formattedDate}
         </td>
         <td
           className={`border border-x-0 border-y border-[--primary-color] p-2 ${
@@ -54,7 +73,7 @@ const History = (props) => {
             isIncome ? "text-green-600" : "text-red-600"
           }`}
         >
-          {amount}
+          Rs{' '}{formattedAmount}
         </td>
         <td
           className={`border border-x-0 border-y border-[--primary-color] p-2 ${
