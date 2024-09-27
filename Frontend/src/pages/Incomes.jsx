@@ -1,34 +1,33 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { MiniHistory } from "../components/index.js";
-import axios from "axios"; // Ensure axios is imported
+import axios from "axios";
 import "../../public/stylesheets/Dashboard.css";
 import "../../public/stylesheets/LogIn.css";
 
 const Incomes = () => {
   const [formData, setFormData] = useState({
-    title: '',
-    amount: '',
-    date: '',
-    category: 'Other', // Default category
-    description: ''
+    title: "",
+    amount: "",
+    date: "",
+    category: "Other", // Default category
+    description: "",
   });
-  const [totalIncome , setTotalIncome]= useState(0);
+  const [totalIncome, setTotalIncome] = useState(0);
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // General change handler for form inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const formHandler = async (e) => {
     e.preventDefault();
-    
+
     // Basic validation
     if (!formData.title || !formData.amount || !formData.date) {
       setError("Please fill in all required fields.");
@@ -36,19 +35,16 @@ const Incomes = () => {
     }
 
     setLoading(true);
-    setError(null); // Clear previous errors
+    setError(null);
 
     try {
       const response = await axios.post("/income/addIncome", formData);
-      console.log(response.data);
-      
-      // Reset form after successful submission
       setFormData({
-        title: '',
-        amount: '',
-        date: '',
-        category: 'Other',
-        description: ''
+        title: "",
+        amount: "",
+        date: "",
+        category: "Other",
+        description: "",
       });
     } catch (error) {
       console.error(error.message);
@@ -70,8 +66,6 @@ const Incomes = () => {
     };
     fetchData();
   }, []);
-
-
 
   return (
     <div className="border-x border-y border-solid border-[--primary-color] h-[56rem] w-full mr-3 p-5 flex flex-col items-center">
@@ -116,7 +110,9 @@ const Incomes = () => {
             className="border-[--primary-color] border-solid border-x border-y px-5 py-3 rounded-md w-3/4"
           />
           <div className="flex flex-row gap-4 items-center justify-between w-3/4">
-            <label htmlFor="category" className="text-xl font-lato">Category</label>
+            <label htmlFor="category" className="text-xl font-lato">
+              Category
+            </label>
             <select
               id="category"
               name="category"
@@ -142,13 +138,19 @@ const Incomes = () => {
           />
           {error && <p className="text-red-500">{error}</p>}
           <div className="w-3/4">
-            <button type="submit" disabled={loading} className={`px-3 py-3 rounded-lg text-white bg-[--accent-color] hover:scale-105 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}>
+            <button
+              type="submit"
+              disabled={loading}
+              className={`px-3 py-3 rounded-lg text-white bg-[--accent-color] hover:scale-105 ${
+                loading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+            >
               {loading ? "Submitting..." : "+ Add Income"}
             </button>
           </div>
         </form>
         <div className="w-1/2">
-          <MiniHistory list={transactions}/>
+          <MiniHistory list={transactions} ans="+" />
         </div>
       </div>
     </div>

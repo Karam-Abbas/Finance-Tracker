@@ -17,7 +17,6 @@ const Dashboard = () => {
         setTotalExpenses(response.data.total_expenses);
         setTotalIncome(response.data.total_income);
         setTransactions(response.data.transactions);
-        console.log(response.data);
       } catch (error) {
         console.log(error);
       }

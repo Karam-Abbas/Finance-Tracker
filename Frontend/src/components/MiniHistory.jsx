@@ -1,23 +1,44 @@
 import "../../public/stylesheets/Dashboard.css";
 import "../../public/stylesheets/LogIn.css";
+
 const MiniHistory = (props) => {
-  const Incomes = () => {
+  const Expenditure = () => {
     const transactions = props.list;
-    transactions.map((transaction) => {
-      if (transaction.sign === "+") {
-        return (
-          <tr key={transaction._id}>
-            <td className="border border-x-0 border-y border-[--primary-color] p-2 text-green-500">
-              {transaction.title}
-            </td>
-            <td className="border border-x-0 border-y border-[--primary-color] p-2 text-green-500">
-              {transaction.amount}
-            </td>
-          </tr>
-        );
-      }
+
+    const filteredTransactions = transactions.filter(
+      (transaction) => transaction.sign === props.ans
+    );
+
+    if (filteredTransactions.length === 0) {
+      return (
+        <tr>
+          <td colSpan="2" className="text-center p-4">
+            No Records found!
+          </td>
+        </tr>
+      );
+    }
+
+    return filteredTransactions.map((transaction) => {
+      const textColor =
+        transaction.sign === "+" ? "text-green-500" : "text-red-500";
+      return (
+        <tr key={transaction._id}>
+          <td
+            className={`border border-x-0 border-y border-[--primary-color] p-2 ${textColor}`}
+          >
+            {transaction.title}
+          </td>
+          <td
+            className={`border border-x-0 border-y border-[--primary-color] p-2 ${textColor}`}
+          >
+            {transaction.amount}
+          </td>
+        </tr>
+      );
     });
   };
+
   return (
     <div>
       <div className="flex items-center justify-center text-3xl font-medium font-inter p-5">
@@ -25,13 +46,18 @@ const MiniHistory = (props) => {
       </div>
       <div className="table_component">
         <table className="w-full">
-          <thead>
-            <tr>
-              <th className="p-2 text-xl font-lato">Name</th>
-              <th className="p-2 text-xl font-lato">Amount</th>
-            </tr>
+        <thead>
+            {props.list.filter((transaction) => transaction.sign === props.ans).length > 0 ?(
+              <tr>
+                <th className="p-2 text-xl font-lato">Name</th>
+                <th className="p-2 text-xl font-lato">Amount</th>
+              </tr>
+            ):(
+              <>
+              </>
+            )}
           </thead>
-          <tbody>{Incomes()}</tbody>
+          <tbody>{Expenditure()}</tbody>
         </table>
       </div>
     </div>

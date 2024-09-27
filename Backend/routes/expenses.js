@@ -32,7 +32,8 @@ router.post("/addExpense", isLoggedIn, async (req, res) => {
       description,
       userId: user._id,
     });
-
+    user.expenses.push(expense);
+    await user.save();
     res.status(201).send(expense);
   } catch (error) {
     console.error(error);
