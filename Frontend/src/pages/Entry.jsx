@@ -13,7 +13,7 @@ const Entry = () => {
     };
   return (
     <>
-      <ThemeSwitch></ThemeSwitch>
+      {/* <ThemeSwitch></ThemeSwitch> */}
       <div className="flex flex-row h-screen w-full items-center justify-evenly font-lato ">
         <div className="flex flex-col gap-5">
           <div className="text-[4rem] font-bold leading-none">

@@ -42,7 +42,7 @@ const History = (props) => {
     const suffixes = ['', 'k', 'M', 'B', 'T'];
     const suffixIndex = Math.floor(Math.log10(Math.abs(amount)) / 3);
     const formattedAmount = (amount / Math.pow(10, suffixIndex * 3)).toFixed(2);
-    return `${formattedAmount}${suffixes[suffixIndex]}`;
+    return `${formattedAmount}${suffixes[suffixIndex]}`==='NaNundefined'? 0 :`${formattedAmount}${suffixes[suffixIndex]}`;
   };
 
   const renderTransactionRow = (transaction) => {
@@ -73,7 +73,7 @@ const History = (props) => {
             isIncome ? "text-green-600" : "text-red-600"
           }`}
         >
-          Rs{' '}{formattedAmount}
+          Rs {formattedAmount}
         </td>
         <td
           className={`border border-x-0 border-y border-[--primary-color] p-2 ${

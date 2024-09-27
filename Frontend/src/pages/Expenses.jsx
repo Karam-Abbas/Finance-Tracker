@@ -29,7 +29,7 @@ const Expenses = () => {
     const suffixes = ["", "k", "M", "B", "T"];
     const suffixIndex = Math.floor(Math.log10(Math.abs(amount)) / 3);
     const formattedAmount = (amount / Math.pow(10, suffixIndex * 3)).toFixed(2);
-    return `${formattedAmount}${suffixes[suffixIndex]}`;
+    return `${formattedAmount}${suffixes[suffixIndex]}`==='NaNundefined'? 0 :`${formattedAmount}${suffixes[suffixIndex]}`;
   };
 
   const formHandler = async (e) => {
