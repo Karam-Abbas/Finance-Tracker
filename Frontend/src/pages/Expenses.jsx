@@ -28,27 +28,21 @@ const Expenses = () => {
   const formHandler = async (e) => {
     e.preventDefault();
 
+    // Basic validation
     if (!formData.title || !formData.amount || !formData.date) {
       setError("Please fill in all required fields.");
       return;
     }
 
     setLoading(true);
-    setError(null);
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("/index/getAll");
-        setTotalExpenses(response.data.total_expenses);
-        setTransactions(response.data.transactions);
-        console.log(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+    setError(null); 
 
     try {
+      // Submit the new expense
       await axios.post("/expenses/addExpense", formData);
+      console.log(formData);
 
+      // Reset form after successful submission
       setFormData({
         title: "",
         amount: "",
@@ -57,7 +51,9 @@ const Expenses = () => {
         description: "",
       });
 
-      fetchData(); 
+      // Refetch transactions after adding a new expense
+      fetchData(); // Call fetchData to update transactions
+
     } catch (error) {
       console.error(error.message);
       setError("An error occurred while submitting the form.");
@@ -66,8 +62,19 @@ const Expenses = () => {
     }
   };
 
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("/index/getAll");
+      setTotalExpenses(response.data.total_expenses);
+      setTransactions(response.data.transactions);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    fetchData(); 
+    fetchData(); // Fetch data on component mount
   }, []);
 
   return (

@@ -25,6 +25,16 @@ const Incomes = () => {
     }));
   };
 
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("/index/getAll");
+      setTotalIncome(response.data.total_income);
+      setTransactions(response.data.transactions);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const formHandler = async (e) => {
     e.preventDefault();
 
@@ -38,7 +48,10 @@ const Incomes = () => {
     setError(null);
 
     try {
-      const response = await axios.post("/income/addIncome", formData);
+      // Submit the new income
+      await axios.post("/income/addIncome", formData);
+
+      // Reset form after successful submission
       setFormData({
         title: "",
         amount: "",
@@ -46,6 +59,10 @@ const Incomes = () => {
         category: "Other",
         description: "",
       });
+
+      // Refetch transactions after adding a new income
+      fetchData(); // Call fetchData to update transactions
+
     } catch (error) {
       console.error(error.message);
       setError("An error occurred while submitting the form.");
@@ -55,16 +72,7 @@ const Incomes = () => {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("/index/getAll");
-        setTotalIncome(response.data.total_income);
-        setTransactions(response.data.transactions);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
+    fetchData(); // Fetch data on component mount
   }, []);
 
   return (
