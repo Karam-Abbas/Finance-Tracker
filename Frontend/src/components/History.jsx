@@ -47,7 +47,7 @@ const History = (props) => {
             isIncome ? "text-green-600" : "text-red-600"
           }`}
         >
-          {isIncome ? title : transaction.name}
+          {title}
         </td>
         <td
           className={`border border-x-0 border-y border-[--primary-color] p-2 ${
@@ -61,7 +61,7 @@ const History = (props) => {
             isIncome ? "text-green-600" : "text-red-600"
           }`}
         >
-          {isIncome ? category : transaction.type}
+          {category}
         </td>
       </tr>
     );
