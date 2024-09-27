@@ -19,6 +19,13 @@ const MiniHistory = (props) => {
       );
     }
 
+    const formatAmount = (amount) => {
+      const suffixes = ['', 'k', 'M', 'B', 'T'];
+      const suffixIndex = Math.floor(Math.log10(Math.abs(amount)) / 3);
+      const formattedAmount = (amount / Math.pow(10, suffixIndex * 3)).toFixed(2);
+      return `${formattedAmount}${suffixes[suffixIndex]}`;
+    };
+
     return filteredTransactions.map((transaction) => {
       const textColor =
         transaction.sign === "+" ? "text-green-500" : "text-red-500";
@@ -32,7 +39,7 @@ const MiniHistory = (props) => {
           <td
             className={`border border-x-0 border-y border-[--primary-color] p-2 ${textColor}`}
           >
-            {transaction.amount}
+            Rs {formatAmount(transaction.amount)}
           </td>
         </tr>
       );

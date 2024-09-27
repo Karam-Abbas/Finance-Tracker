@@ -25,6 +25,13 @@ const Expenses = () => {
     }));
   };
 
+  const formatAmount = (amount) => {
+    const suffixes = ["", "k", "M", "B", "T"];
+    const suffixIndex = Math.floor(Math.log10(Math.abs(amount)) / 3);
+    const formattedAmount = (amount / Math.pow(10, suffixIndex * 3)).toFixed(2);
+    return `${formattedAmount}${suffixes[suffixIndex]}`;
+  };
+
   const formHandler = async (e) => {
     e.preventDefault();
 
@@ -35,7 +42,7 @@ const Expenses = () => {
     }
 
     setLoading(true);
-    setError(null); 
+    setError(null);
 
     try {
       // Submit the new expense
@@ -53,7 +60,6 @@ const Expenses = () => {
 
       // Refetch transactions after adding a new expense
       fetchData(); // Call fetchData to update transactions
-
     } catch (error) {
       console.error(error.message);
       setError("An error occurred while submitting the form.");
@@ -85,7 +91,7 @@ const Expenses = () => {
             Total Expenses:{" "}
           </span>{" "}
           <span className="text-3xl text-[--danger] font-bold">
-            Rs{totalExpenses}
+            Rs {formatAmount(totalExpenses)}
           </span>
         </div>
       </div>

@@ -25,6 +25,13 @@ const Incomes = () => {
     }));
   };
 
+  const formatAmount = (amount) => {
+    const suffixes = ["", "k", "M", "B", "T"];
+    const suffixIndex = Math.floor(Math.log10(Math.abs(amount)) / 3);
+    const formattedAmount = (amount / Math.pow(10, suffixIndex * 3)).toFixed(2);
+    return `${formattedAmount}${suffixes[suffixIndex]}`;
+  };
+
   const fetchData = async () => {
     try {
       const response = await axios.get("/index/getAll");
@@ -62,7 +69,6 @@ const Incomes = () => {
 
       // Refetch transactions after adding a new income
       fetchData(); // Call fetchData to update transactions
-
     } catch (error) {
       console.error(error.message);
       setError("An error occurred while submitting the form.");
@@ -83,7 +89,7 @@ const Incomes = () => {
             Total Income:{" "}
           </span>{" "}
           <span className="text-3xl text-[--accent-color] font-bold">
-            Rs{totalIncome}
+            Rs {formatAmount(totalIncome)}
           </span>
         </div>
       </div>

@@ -24,7 +24,7 @@ const Dashboard = () => {
     fetchData();
   }, []);
   const formatAmount = (amount) => {
-    const suffixes = ['', 'k', 'M', 'B', 'T'];
+    const suffixes = ["", "k", "M", "B", "T"];
     const suffixIndex = Math.floor(Math.log10(Math.abs(amount)) / 3);
     const formattedAmount = (amount / Math.pow(10, suffixIndex * 3)).toFixed(2);
     return `${formattedAmount}${suffixes[suffixIndex]}`;
@@ -95,7 +95,7 @@ const Dashboard = () => {
         </div>
         <div className="flex flex-row items-center justify-between w-3/4 border-x border-y border-[--placeholder-color] border-solid p-2">
           <span className="text-3xl font-medium font-inter text-[--placeholder-color]">
-            Rs  {formatAmount(minIncome)}
+            Rs {formatAmount(minIncome)}
           </span>
           <span className="text-3xl font-medium font-inter text-[--placeholder-color]">
             Rs {formatAmount(maxIncome)}
@@ -118,7 +118,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <History list={transactions}/>
+      <History list={transactions} />
     </div>
   );
 };

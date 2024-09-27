@@ -1,7 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Layout,In } from "./components/index.js";
-import { Dashboard, Transaction, Incomes, Expenses, Entry } from "./pages/index.js";
+import { Layout, In } from "./components/index.js";
+import {
+  Dashboard,
+  Transaction,
+  Incomes,
+  Expenses,
+  Entry,
+} from "./pages/index.js";
 import "./index.css";
 import {
   createBrowserRouter,
