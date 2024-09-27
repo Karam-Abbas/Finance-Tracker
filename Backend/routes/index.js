@@ -31,4 +31,14 @@ router.get("/getAll", isLoggedIn, async (req, res) => {
     res.status(500).send({ message: "Internal Server Error" });
   }
 });
+
+router.get("/getUserName", isLoggedIn, async (req, res) => {
+  try {
+    let username = req.user.name;
+    res.json({username});
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    res.status(500).send({ message: "Internal Server Error" });
+  }
+});
 module.exports = router;

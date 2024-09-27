@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import "../../public/stylesheets/Sidebar.css";
 import "../../public/stylesheets/LogIn.css";
 import { Link } from "react-router-dom";
@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const Sidebar = () => {
   const navigate = useNavigate();
-
+  const [username, setUsername] = useState("Name");
   const LogoutEvent = async (e) => {
     e.preventDefault();
     try {
@@ -18,6 +18,18 @@ const Sidebar = () => {
       console.log(error);
     }
   };
+  const getName = async()=>{
+    try {
+      const response = await axios.get("/index/getUserName");
+      setUsername(response.data.username);
+    } catch (error) {
+      console.log(error);
+      return "User";
+    }
+  };
+  useEffect(()=>{
+    getName();
+  },[]);
   return (
     <>
       <div className="h-[56rem] border-solid border-y border-x border-[--primary-color] w-[20rem] p-5 m-3 flex flex-col">
@@ -27,7 +39,7 @@ const Sidebar = () => {
             className="w-20 h-20 p-2 rounded-full border-solid border-y border-x border-[--primary-color]"
           />
           <div className="h-20 flex flex-col items-start justify-center">
-            <div className="text-2xl font-bold text-[--accent-color]">Name</div>
+            <div className="text-xl font-bold text-[--accent-color]">{username}</div>
             <div className="text-lg font-normal text-[--primary-color]">
               Your Money
             </div>
