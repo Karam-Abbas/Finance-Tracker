@@ -1,6 +1,4 @@
-Here’s a sample README file for your Finance Tracker project that you can include in your GitHub repository:
 
-```markdown
 # Finance Tracker
 
 Finance Tracker is a web application designed to help users manage their finances effectively. It allows users to track their income, expenses, and view financial summaries in a user-friendly interface.
