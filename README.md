@@ -81,6 +81,7 @@ To get started with the Finance Tracker application, follow these steps:
 
 - Landing page which is to be placed at the `http://localhost:5173/` route.
 - A button/method to automatically log in the user that has previously logged in on the website and not logged out, without showing the login/signup page.
+- Responsive Design.
 
 ## Usage
 
