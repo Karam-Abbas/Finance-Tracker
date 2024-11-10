@@ -69,7 +69,7 @@ To get started with the Finance Tracker application, follow these steps:
    nodemon
    ```
 
-6. Open your browser and navigate to `http://localhost:5173/entry` to view the application.
+6. Open your browser and navigate to `http://localhost:5173/entry` to view the application's Signup/Login Page and from there on proceed forward.
    
 7. In order to check debugger values run the following command first to check weather the DB has connected properly or is there any issue in the App.js of the backend
    ```bash
@@ -79,8 +79,8 @@ To get started with the Finance Tracker application, follow these steps:
    
 ## Pending Features/Work
 
--- Landing page which is to be placed at the `http://localhost:5173/` route.
--- A button/method to automatically log in the user that has previously logged in on the website and not logged out, without showing the login/signup page.
+- Landing page which is to be placed at the `http://localhost:5173/` route.
+- A button/method to automatically log in the user that has previously logged in on the website and not logged out, without showing the login/signup page.
 
 ## Usage
 
