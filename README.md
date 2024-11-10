@@ -38,38 +38,49 @@ To get started with the Finance Tracker application, follow these steps:
 2. **Install Dependencies**:
    For the backend:
    ```bash
-   cd server
+   cd Backend
    npm install
    ```
 
    For the frontend:
    ```bash
-   cd client
+   cd Frontend
    npm install
    ```
 
 3. **Set Up Environment Variables**:
-   Create a `.env` file in the `server` directory and add the following variables:
+   Create a `.env` file in the `Backend` directory and add the following variables with specified info :
    ```
-   PORT=5000
-   MONGODB_URI=<your_mongodb_connection_string>
-   JWT_SECRET=<your_jwt_secret>
+   MONGO_URL = "mongodb://localhost:27017/<-----DB NAME----->"
+   JWT_PRIVATE_KEY="<-----PRIVATE KEY----->"
+   JWT_PUBLIC_KEY="<-----PUBLIC KEY----->"
    ```
-
-4. **Run the Application**:
+   
+5. **Run the Application**:
    Start the backend server:
    ```bash
-   cd server
-   node index.js
+   cd Backend
+   nodemon app.js
    ```
 
    Start the frontend application:
    ```bash
-   cd client
-   npm start
+   cd Frontend
+   nodemon
    ```
 
-5. Open your browser and navigate to `http://localhost:3000` to view the application.
+6. Open your browser and navigate to `http://localhost:5173/entry` to view the application.
+   
+7. In order to check debugger values run the following command first to check weather the DB has connected properly or is there any issue in the App.js of the backend
+   ```bash
+   $env:DEBUG="development:*"
+   ```
+   This will turn on the visibility of development debugger messages on the CLI .
+   
+## Pending Features/Work
+
+-- Landing page which is to be placed at the `http://localhost:5173/` route.
+-- A button/method to automatically log in the user that has previously logged in on the website and not logged out, without showing the login/signup page.
 
 ## Usage
 
