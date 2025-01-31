@@ -5,7 +5,7 @@ import { History } from "../components/index";
 
 const Transaction = () => {
   return (<>
-      <div className="border-x border-y border-solid border-[--primary-color] h-[56rem] w-full mr-3 p-5">
+      <div className="p-4 space-y-8 border rounded-lg w-full h-full mr-4">
         <History/>
       </div>
   </>);

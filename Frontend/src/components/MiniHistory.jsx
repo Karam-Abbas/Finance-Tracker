@@ -1,44 +1,51 @@
-import "../../public/stylesheets/Dashboard.css";
-import "../../public/stylesheets/LogIn.css";
+import React from "react";
+import { ArrowUpCircle, ArrowDownCircle } from "lucide-react";
 
-const MiniHistory = (props) => {
-  const Expenditure = () => {
-    const transactions = props.list;
+const MiniHistory = ({ list, ans }) => {
+  const formatAmount = (amount) => {
+    const suffixes = ["", "k", "M", "B", "T"];
+    const suffixIndex = Math.floor(Math.log10(Math.abs(amount)) / 3);
+    const formattedAmount = (amount / Math.pow(10, suffixIndex * 3)).toFixed(2);
+    return `${formattedAmount}${suffixes[suffixIndex]}` === "NaNundefined"
+      ? "0"
+      : `${formattedAmount}${suffixes[suffixIndex]}`;
+  };
 
-    const filteredTransactions = transactions.filter(
-      (transaction) => transaction.sign === props.ans
-    );
+  const filteredTransactions = list.filter(
+    (transaction) => transaction.sign === ans
+  );
 
+  const TransactionList = () => {
     if (filteredTransactions.length === 0) {
       return (
         <tr>
-          <td colSpan="2" className="text-center p-4">
-            No Records found!
+          <td
+            colSpan="3"
+            className="text-center py-8 text-sm text-gray-500"
+          >
+            No records found
           </td>
         </tr>
       );
     }
 
-    const formatAmount = (amount) => {
-      const suffixes = ['', 'k', 'M', 'B', 'T'];
-      const suffixIndex = Math.floor(Math.log10(Math.abs(amount)) / 3);
-      const formattedAmount = (amount / Math.pow(10, suffixIndex * 3)).toFixed(2);
-      return `${formattedAmount}${suffixes[suffixIndex]}`==='NaNundefined'? 0 :`${formattedAmount}${suffixes[suffixIndex]}`;
-    };
-
     return filteredTransactions.map((transaction) => {
-      const textColor =
-        transaction.sign === "+" ? "text-green-500" : "text-red-500";
+      const isIncome = transaction.sign === "+";
       return (
-        <tr key={transaction._id}>
-          <td
-            className={`border border-x-0 border-y border-[--primary-color] p-2 ${textColor}`}
-          >
-            {transaction.title}
+        <tr key={transaction._id} className="group hover:bg-gray-50">
+          <td className="py-3 px-4 text-sm">
+            <div className="flex items-center gap-2">
+              {isIncome ? (
+                <ArrowUpCircle className="h-4 w-4 text-green-500" />
+              ) : (
+                <ArrowDownCircle className="h-4 w-4 text-red-500" />
+              )}
+              {transaction.title}
+            </div>
           </td>
-          <td
-            className={`border border-x-0 border-y border-[--primary-color] p-2 ${textColor}`}
-          >
+          <td className={`py-3 px-4 text-sm text-right ${
+            isIncome ? "text-green-500" : "text-red-500"
+          }`}>
             Rs {formatAmount(transaction.amount)}
           </td>
         </tr>
@@ -47,25 +54,31 @@ const MiniHistory = (props) => {
   };
 
   return (
-    <div>
-      <div className="flex items-center justify-center text-3xl font-medium font-inter p-5">
-        <p>History</p>
+    <div className="h-full">
+      <div className="mb-4">
+        <h2 className="text-lg font-medium">Transaction History</h2>
       </div>
-      <div className="table_component">
-        <table className="w-full">
-        <thead>
-            {props.list.filter((transaction) => transaction.sign === props.ans).length > 0 ?(
-              <tr>
-                <th className="p-2 text-xl font-lato">Name</th>
-                <th className="p-2 text-xl font-lato">Amount</th>
-              </tr>
-            ):(
-              <>
-              </>
+      
+      <div className="relative overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse">
+            {filteredTransactions.length > 0 && (
+              <thead>
+                <tr className="border-b border-gray-200">
+                  <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Name
+                  </th>
+                  <th className="py-3 px-4 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Amount
+                  </th>
+                </tr>
+              </thead>
             )}
-          </thead>
-          <tbody>{Expenditure()}</tbody>
-        </table>
+            <tbody className="divide-y divide-gray-200">
+              <TransactionList />
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

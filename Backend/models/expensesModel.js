@@ -12,7 +12,6 @@ const expensesSchema = mongoose.Schema({
     },
     date: {
         type: Date,
-        required: true,
         default: Date.now
     },
     category: {
@@ -21,7 +20,6 @@ const expensesSchema = mongoose.Schema({
     },
     description: {
         type: String,
-        required: true,
         maxLength:30
     },
     sign:{

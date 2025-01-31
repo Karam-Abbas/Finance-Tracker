@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "../../public/stylesheets/Dashboard.css";
-import "../../public/stylesheets/LogIn.css";
-
+import { ArrowUp, ArrowDown, Inbox } from 'lucide-react';
+import "../../public/stylesheets/History.css";
 const History = (props) => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -33,7 +32,7 @@ const History = (props) => {
     const date = new Date(isoString);
     return date.toLocaleDateString('en-US', {
       year: 'numeric',
-      month: 'long', // 'short' for abbreviated month names
+      month: 'long',
       day: 'numeric',
     });
   };
@@ -42,100 +41,117 @@ const History = (props) => {
     const suffixes = ['', 'k', 'M', 'B', 'T'];
     const suffixIndex = Math.floor(Math.log10(Math.abs(amount)) / 3);
     const formattedAmount = (amount / Math.pow(10, suffixIndex * 3)).toFixed(2);
-    return `${formattedAmount}${suffixes[suffixIndex]}`==='NaNundefined'? 0 :`${formattedAmount}${suffixes[suffixIndex]}`;
+    return `${formattedAmount}${suffixes[suffixIndex]}` === 'NaNundefined' ? 
+      '0' : 
+      `${formattedAmount}${suffixes[suffixIndex]}`;
   };
 
-  const renderTransactionRow = (transaction) => {
+  const TransactionRow = ({ transaction }) => {
     const { date, title, amount, category, sign } = transaction;
-
     const formattedDate = formatDate(date);
     const formattedAmount = formatAmount(amount);
     const isIncome = sign === "+";
 
     return (
-      <tr key={transaction._id}>
-        <td
-          className={`border border-x-0 border-y border-[--primary-color] p-2 ${
-            isIncome ? "text-green-600" : "text-red-600"
-          }`}
-        >
-          {formattedDate}
+      <tr className="border-b border-border transition-colors hover:bg-muted/50">
+        <td className="p-4">
+          <div className="text-sm text-muted-foreground">
+            {formattedDate}
+          </div>
         </td>
-        <td
-          className={`border border-x-0 border-y border-[--primary-color] p-2 ${
-            isIncome ? "text-green-600" : "text-red-600"
-          }`}
-        >
-          {title}
+        <td className="p-4">
+          <div className="font-medium">{title}</div>
         </td>
-        <td
-          className={`border border-x-0 border-y border-[--primary-color] p-2 ${
+        <td className="p-4">
+          <div className={`flex items-center gap-2 font-medium ${
             isIncome ? "text-green-600" : "text-red-600"
-          }`}
-        >
-          Rs {formattedAmount}
+          }`}>
+            {isIncome ? 
+              <ArrowUp className="h-4 w-4" /> : 
+              <ArrowDown className="h-4 w-4" />
+            }
+            Rs {formattedAmount}
+          </div>
         </td>
-        <td
-          className={`border border-x-0 border-y border-[--primary-color] p-2 ${
-            isIncome ? "text-green-600" : "text-red-600"
-          }`}
-        >
-          {category}
+        <td className="p-4">
+          <div className="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold bg-secondary text-secondary-foreground">
+            {category}
+          </div>
         </td>
       </tr>
     );
   };
 
-  const fullDisplay = () => {
-    if (loading) {
-      return <p>Loading...</p>;
-    }
-
-    if (error) {
-      return <p className="text-red-500">{error}</p>;
-    }
-
-    if (transactions.length > 0) {
-      return (
-        <div className="table_component">
-          <table className="w-3/4">
-            <thead>
-              <tr>
-                <th className="border border-x-0 border-y border-[--primary-color] p-2 text-xl font-lato">
-                  Date
-                </th>
-                <th className="border border-x-0 border-y border-[--primary-color] p-2 text-xl font-lato">
-                  Name
-                </th>
-                <th className="border border-x-0 border-y border-[--primary-color] p-2 text-xl font-lato">
-                  Amount
-                </th>
-                <th className="border border-x-0 border-y border-[--primary-color] p-2 text-xl font-lato">
-                  Type
-                </th>
-              </tr>
-            </thead>
-            <tbody>{transactions.map(renderTransactionRow)}</tbody>
-          </table>
+  const LoadingSkeleton = () => (
+    <div className="space-y-4">
+      {[1, 2, 3].map((i) => (
+        <div key={i} className="flex items-center space-x-4 p-4">
+          <div className="h-4 w-[30%] animate-pulse rounded bg-muted"></div>
+          <div className="h-4 w-[40%] animate-pulse rounded bg-muted"></div>
+          <div className="h-4 w-[20%] animate-pulse rounded bg-muted"></div>
         </div>
-      );
-    } else {
-      return (
-        <div>
-          <p className="text-3xl text-[--primary-color] flex flex-row justify-center items-center w-full">
-            No transactions found.
-          </p>
-        </div>
-      );
-    }
+      ))}
+    </div>
+  );
+
+  const EmptyState = () => (
+    <div className="flex flex-col items-center justify-center py-12 text-center">
+      <div className="rounded-full bg-muted p-4">
+        <Inbox className="h-6 w-6 text-muted-foreground" />
+      </div>
+      <h3 className="mt-4 text-lg font-semibold">No transactions found</h3>
+      <p className="mt-2 text-sm text-muted-foreground">
+        Start adding transactions to see them here.
+      </p>
+    </div>
+  );
+
+  const Content = () => {
+    if (loading) return <LoadingSkeleton />;
+    if (error) return (
+      <div className="p-4 text-sm text-red-500 bg-red-50 rounded-lg">
+        {error}
+      </div>
+    );
+    if (!transactions.length) return <EmptyState />;
+
+    return (
+      <div className="relative overflow-x-auto rounded-lg">
+        <table className="w-full">
+          <thead>
+            <tr className="border-b border-border bg-muted/50">
+              <th className="p-4 text-left text-sm font-medium text-muted-foreground">
+                Date
+              </th>
+              <th className="p-4 text-left text-sm font-medium text-muted-foreground">
+                Name
+              </th>
+              <th className="p-4 text-left text-sm font-medium text-muted-foreground">
+                Amount
+              </th>
+              <th className="p-4 text-left text-sm font-medium text-muted-foreground">
+                Type
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {transactions.map((transaction) => (
+              <TransactionRow key={transaction._id} transaction={transaction} />
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
   };
 
   return (
-    <div>
-      <div className="flex items-center justify-center text-5xl font-medium font-inter p-5 ">
-        <p>History</p>
+    <div className="space-y-4">
+      <div className="flex items-center justify-center">
+        <h2 className="text-2xl font-semibold tracking-tight">
+          Transaction History
+        </h2>
       </div>
-      {fullDisplay()}
+      <Content />
     </div>
   );
 };

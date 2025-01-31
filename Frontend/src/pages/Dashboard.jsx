@@ -1,13 +1,66 @@
 import React, { useState, useEffect } from "react";
-import "../../public/stylesheets/Dashboard.css";
-import "../../public/stylesheets/LogIn.css";
-import { History } from "../components/index";
 import axios from "axios";
+import { History } from "../components/index";
+import { ArrowUp, ArrowDown, Wallet } from 'lucide-react';
+
+// Utility component for stat cards
+const StatCard = ({ title, value, icon: Icon, trend }) => (
+  <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
+    <div className="flex flex-row items-center justify-between pb-2">
+      <h3 className="text-sm font-medium text-muted-foreground">{title}</h3>
+      <Icon className="h-4 w-4 text-muted-foreground" />
+    </div>
+    <div className="space-y-1">
+      <div className="text-2xl font-bold">Rs {value}</div>
+      {trend && (
+        <div className="flex items-center text-xs text-muted-foreground">
+          {trend > 0 ? (
+            <ArrowUp className="mr-1 h-4 w-4 text-green-500" />
+          ) : (
+            <ArrowDown className="mr-1 h-4 w-4 text-red-500" />
+          )}
+          <span>{Math.abs(trend)}% from last month</span>
+        </div>
+      )}
+    </div>
+  </div>
+);
+
+// Utility component for min-max cards
+const MinMaxCard = ({ title, min, max }) => (
+  <div className="rounded-lg border bg-card text-card-foreground shadow-sm w-3/4 mx-auto my-4">
+    <div className="p-6 pb-2">
+      <h3 className="text-lg font-semibold text-center">{title}</h3>
+    </div>
+    <div className="p-6">
+      <div className="flex justify-between items-center">
+        <div className="text-center">
+          <div className="text-sm font-medium text-muted-foreground">Min</div>
+          <div className="text-xl font-bold">Rs {min}</div>
+        </div>
+        <div className="text-center">
+          <div className="text-sm font-medium text-muted-foreground">Max</div>
+          <div className="text-xl font-bold">Rs {max}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// Loading skeleton component
+const Skeleton = () => (
+  <div className="animate-pulse">
+    <div className="h-4 bg-gray-200 rounded w-1/2 mb-2"></div>
+    <div className="h-8 bg-gray-200 rounded w-full"></div>
+  </div>
+);
+
 const Dashboard = () => {
   const [netTotal, setNetTotal] = useState(0);
   const [total_expenses, setTotalExpenses] = useState(0);
   const [total_income, setTotalIncome] = useState(0);
   const [transactions, setTransactions] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,107 +72,98 @@ const Dashboard = () => {
         setTransactions(response.data.transactions);
       } catch (error) {
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
   }, []);
+
   const formatAmount = (amount) => {
     const suffixes = ["", "k", "M", "B", "T"];
     const suffixIndex = Math.floor(Math.log10(Math.abs(amount)) / 3);
     const formattedAmount = (amount / Math.pow(10, suffixIndex * 3)).toFixed(2);
-    return `${formattedAmount}${suffixes[suffixIndex]}`==='NaNundefined'? 0 :`${formattedAmount}${suffixes[suffixIndex]}`;
+    return `${formattedAmount}${suffixes[suffixIndex]}` === 'NaNundefined' ? 
+      '0' : 
+      `${formattedAmount}${suffixes[suffixIndex]}`;
   };
 
-  let minIncome = Infinity;
-  let maxIncome = -Infinity;
-  let minExpense = Infinity;
-  let maxExpense = -Infinity;
-
-  for (let transaction of transactions) {
-    const amount = transaction.amount;
-    const sign = transaction.sign;
-
-    if (sign === "+") {
-      if (amount < minIncome) {
-        minIncome = amount;
+  // Calculate min/max values
+  const { minIncome, maxIncome, minExpense, maxExpense } = transactions.reduce(
+    (acc, transaction) => {
+      const amount = transaction.amount;
+      if (transaction.sign === "+") {
+        acc.minIncome = Math.min(acc.minIncome, amount);
+        acc.maxIncome = Math.max(acc.maxIncome, amount);
+      } else {
+        acc.minExpense = Math.min(acc.minExpense, amount);
+        acc.maxExpense = Math.max(acc.maxExpense, amount);
       }
-      if (amount > maxIncome) {
-        maxIncome = amount;
-      }
-    } else if (sign === "-") {
-      if (amount < minExpense) {
-        minExpense = amount;
-      }
-      if (amount > maxExpense) {
-        maxExpense = amount;
-      }
+      return acc;
+    },
+    {
+      minIncome: Infinity,
+      maxIncome: -Infinity,
+      minExpense: Infinity,
+      maxExpense: -Infinity,
     }
+  );
+
+  if (loading) {
+    return (
+      <div className="p-4 space-y-4">
+        <div className="grid gap-4 md:grid-cols-3">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="rounded-lg border bg-card p-6">
+              <Skeleton />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
   }
-  if (minIncome === Infinity) minIncome = 0;
-  if (maxIncome === -Infinity) maxIncome = 0;
-  if (minExpense === Infinity) minExpense = 0;
-  if (maxExpense === -Infinity) maxExpense = 0;
+
   return (
-    <div className="border-x border-y border-solid border-[--primary-color] h-[56rem] w-full mr-3 p-5">
-      <div className="flex flex-row items-center justify-center gap-3">
-        <div className="flex flex-col items-center justify-end gap-2 border-x border-y border-solid border-[--primary-color] px-8 py-5 rounded-lg">
-          <div className="text-2xl text-[--primary-color] font-medium font-inter">
-            Net Balance
-          </div>
-          <div className="text-5xl text-[--accent-color] font-medium font-lato">
-            Rs {formatAmount(netTotal)}
-          </div>
-        </div>
-        <div className="flex flex-col items-center justify-end gap-2 border-x border-y border-solid border-[--primary-color] px-8 py-5 rounded-lg">
-          <div className="text-2xl text-[--primary-color] font-medium font-inter">
-            Net Expenses
-          </div>
-          <div className="text-5xl text-[--accent-color] font-medium font-lato">
-            Rs {formatAmount(total_expenses)}
-          </div>
-        </div>
-        <div className="flex flex-col items-center justify-end gap-2 border-x border-y border-solid border-[--primary-color] px-8 py-5 rounded-lg">
-          <div className="text-2xl text-[--primary-color] font-medium font-inter">
-            Net Incomes
-          </div>
-          <div className="text-5xl text-[--accent-color] font-medium font-lato">
-            Rs {formatAmount(total_income)}
-          </div>
-        </div>
-      </div>
-      <div className="flex flex-col items-center gap-2 px-5 py-3">
-        <div className="flex flex-row items-center justify-between w-3/4">
-          <span className="text-2xl font-medium">Min</span>
-          <span className="text-3xl font-medium">Income</span>
-          <span className="text-2xl font-medium">Max</span>
-        </div>
-        <div className="flex flex-row items-center justify-between w-3/4 border-x border-y border-[--placeholder-color] border-solid p-2">
-          <span className="text-3xl font-medium font-inter text-[--placeholder-color]">
-            Rs {formatAmount(minIncome)}
-          </span>
-          <span className="text-3xl font-medium font-inter text-[--placeholder-color]">
-            Rs {formatAmount(maxIncome)}
-          </span>
-        </div>
-      </div>
-      <div className="flex flex-col items-center gap-2 px-5 py-3">
-        <div className="flex flex-row items-center justify-between w-3/4">
-          <span className="text-2xl font-medium">Min</span>
-          <span className="text-3xl font-medium">Expenses</span>
-          <span className="text-2xl font-medium">Max</span>
-        </div>
-        <div className="flex flex-row items-center justify-between w-3/4 border-x border-y border-[--placeholder-color] border-solid p-2">
-          <span className="text-3xl font-medium font-inter text-[--placeholder-color]">
-            Rs {formatAmount(minExpense)}
-          </span>
-          <span className="text-3xl font-medium font-inter text-[--placeholder-color]">
-            Rs {formatAmount(maxExpense)}
-          </span>
-        </div>
+    <div className="p-8 space-y-8 border rounded-lg w-full">
+      <div className="grid gap-4 md:grid-cols-3">
+        <StatCard
+          title="Net Balance"
+          value={formatAmount(netTotal)}
+          icon={Wallet}
+        />
+        <StatCard
+          title="Total Expenses"
+          value={formatAmount(total_expenses)}
+          icon={ArrowDown}
+          trend={-1}
+        />
+        <StatCard
+          title="Total Income"
+          value={formatAmount(total_income)}
+          icon={ArrowUp}
+          trend={1}
+        />
       </div>
 
-      <History list={transactions} />
+      <MinMaxCard
+        title="Income Range"
+        min={formatAmount(minIncome === Infinity ? 0 : minIncome)}
+        max={formatAmount(maxIncome === -Infinity ? 0 : maxIncome)}
+      />
+
+      <MinMaxCard
+        title="Expense Range"
+        min={formatAmount(minExpense === Infinity ? 0 : minExpense)}
+        max={formatAmount(maxExpense === -Infinity ? 0 : maxExpense)}
+      />
+
+      <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
+        <div className="p-6">
+          <History list={transactions} />
+        </div>
+      </div>
     </div>
   );
 };
+
 export default Dashboard;

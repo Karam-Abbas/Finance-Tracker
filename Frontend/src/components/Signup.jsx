@@ -80,7 +80,7 @@ function Signup({ setToggle }) {
         <div className="flex items-center justify-center bg-[--containers-background] pt-4">
           <button
             type="submit"
-            className="font-karla flex hover:scale-105 w-80 px-5 py-3 items-center justify-center bg-[--secondary-color] rounded-md text-white text-2xl font-bold"
+            className="transition-transform delay-0 font-karla flex hover:scale-105 w-80 px-5 py-3 items-center justify-center bg-[--secondary-color] rounded-md text-white text-2xl font-bold"
           >
             Sign Up
           </button>
@@ -91,7 +91,7 @@ function Signup({ setToggle }) {
           Already have an account?{" "}
           <a
             onClick={() => setToggle("Login")}
-            className="text-[--accent-color] cursor-pointer bg-[--containers-background]"
+            className="text-[--accent-color] cursor-pointer bg-[--containers-background] hover:text-blue-700 hover:scale-105"
           >
             Login
           </a>{" "}
@@ -104,13 +104,13 @@ function Signup({ setToggle }) {
           Use Social Login
         </p>
         <div className="flex flex-row items-center justify-between gap-3 rounded-md  w-full bg-[--containers-background]">
-          <button className="hover:scale-110 bg-[--containers-background]">
+          <button className="transition-transform delay-0 hover:scale-110 bg-[--containers-background]">
             <img src="/images/google.svg" alt="" />
           </button>
-          <button className="hover:scale-110 bg-[--containers-background]">
+          <button className="transition-transform delay-0 hover:scale-110 bg-[--containers-background]">
             <img src="/images/fb.svg" alt="" />
           </button>
-          <button className="hover:scale-110 bg-[--containers-background]">
+          <button className="transition-transform delay-0 hover:scale-110 bg-[--containers-background]">
             <img
               src="/images/apple.svg
             "

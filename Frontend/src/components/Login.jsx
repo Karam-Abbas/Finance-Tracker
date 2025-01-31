@@ -24,7 +24,7 @@ function Login({ setToggle }) {
   return (
     <div className="mainContainer flex flex-col gap-4">
       <form onSubmit={handleLogin}>
-        <div className="flex flex-col gap-2 bg-[--containers-background]">
+        <div className="flex flex-col gap-2 bg-[--containers-background">
           <div className="textField">
             <div className="textFieldHeading">Email</div>
             <input
@@ -46,7 +46,7 @@ function Login({ setToggle }) {
               className="password"
               placeholder="***********"
               required
-            ></input>
+            ></input> 
             <p className="textFieldInfo">
               The password must be 8-16 characters long, with at least one
               special character and number.
@@ -56,7 +56,7 @@ function Login({ setToggle }) {
         <div className="flex items-center justify-center bg-[--containers-background] pt-4">
           <button
             type="submit"
-            className="font-karla flex hover:scale-105 w-80 px-5 py-3 items-center justify-center bg-[--secondary-color] rounded-md text-white text-2xl font-bold"
+            className="transition-transform delay-0 font-karla flex hover:scale-105 w-80 px-5 py-3 items-center justify-center bg-[--secondary-color] rounded-md text-white text-2xl font-bold"
           >
             Login
           </button>
@@ -67,7 +67,7 @@ function Login({ setToggle }) {
           Already have an account?{" "}
           <a
             onClick={() => setToggle("Signup")}
-            className="text-[--accent-color] cursor-pointer bg-[--containers-background]"
+            className="text-[--accent-color] cursor-pointer bg-[--containers-background] hover:text-blue-800"
           >
             Signup
           </a>{" "}
@@ -80,13 +80,13 @@ function Login({ setToggle }) {
           Use Social Login
         </p>
         <div className="flex flex-row items-center justify-between gap-3 rounded-md  w-full bg-[--containers-background]">
-          <button className="hover:scale-110 bg-[--containers-background]">
+          <button className="transition-transform hover:scale-110 bg-[--containers-background]">
             <img src="/images/google.svg" alt="" />
           </button>
-          <button className="hover:scale-110 bg-[--containers-background]">
+          <button className="transition-transform hover:scale-110 bg-[--containers-background]">
             <img src="/images/fb.svg" alt="" />
           </button>
-          <button className="hover:scale-110 bg-[--containers-background]">
+          <button className="transition-transform hover:scale-110 bg-[--containers-background]">
             <img
               src="/images/apple.svg
             "
