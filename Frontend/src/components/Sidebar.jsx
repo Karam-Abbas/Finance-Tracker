@@ -13,7 +13,7 @@ import {
 const NavLink = ({ to, icon: Icon, children }) => (
   <Link
     to={to}
-    className="w-full flex items-center space-x-3 rounded-lg px-3 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-200 hover:text-gray-900"
+    className="w-full flex items-center space-x-3 rounded-lg px-3 py-2 text-sm text-[var(--primary-color)] transition-colors hover:bg-gray-200 hover:text-gray-900"
   >
     <Icon className="h-4 w-4 bg-transparent" />
     <span className="bg-transparent">{children}</span>
@@ -57,7 +57,7 @@ const Sidebar = () => {
           <User className="h-6 w-6 text-gray-600 bg-transparent" />
         </div>
         <div>
-          <h3 className="text-sm font-medium text-gray-900">{username}</h3>
+          <h3 className="text-sm font-medium text-[var(--primary-color)]">{username}</h3>
           <p className="text-xs text-gray-500">Welcome Back!</p>
         </div>
       </div>

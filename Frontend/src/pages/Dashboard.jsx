@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { History } from "../components/index";
-import { ArrowUp, ArrowDown, Wallet } from 'lucide-react';
+import { ArrowUp, ArrowDown, Wallet } from "lucide-react";
 
 // Utility component for stat cards
 const StatCard = ({ title, value, icon: Icon, trend }) => (
@@ -83,9 +83,9 @@ const Dashboard = () => {
     const suffixes = ["", "k", "M", "B", "T"];
     const suffixIndex = Math.floor(Math.log10(Math.abs(amount)) / 3);
     const formattedAmount = (amount / Math.pow(10, suffixIndex * 3)).toFixed(2);
-    return `${formattedAmount}${suffixes[suffixIndex]}` === 'NaNundefined' ? 
-      '0' : 
-      `${formattedAmount}${suffixes[suffixIndex]}`;
+    return `${formattedAmount}${suffixes[suffixIndex]}` === "NaNundefined"
+      ? "0"
+      : `${formattedAmount}${suffixes[suffixIndex]}`;
   };
 
   // Calculate min/max values
@@ -124,8 +124,11 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="p-8 space-y-8 w-full h-full border-l">
-      <div className="grid gap-4 md:grid-cols-3">
+    <div
+      className="p-8 space-y-8 w-full h-full border-l border-[var(--placeholder-color)] 
+     text-[var(--primary-color)]"
+    >
+      <div className="grid gap-4 md:grid-cols-3 bg-transparent ">
         <StatCard
           title="Net Balance"
           value={formatAmount(netTotal)}
@@ -159,7 +162,7 @@ const Dashboard = () => {
 
       <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-1">
         <div className="p-6">
-          <History list={transactions}/>
+          <History list={transactions} />
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@ function Footer() {
   return (
     <>
     {/* Footer */}
-    <footer className="py-12 border shadow-lg">
+    <footer className="py-12 border-t shadow-[0_-4px_6px_-1px_rgba(0,0.1,0,0.1)] ">
     <div className="px-4 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
       <div className="space-y-4">
         <div className="flex items-center gap-2">

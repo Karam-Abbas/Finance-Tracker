@@ -10,10 +10,10 @@ export default function Contact() {
   return (
     <div className="min-h-screen">
       {/* Contact Header */}
-      <div className="bg-gray-50 dark:bg-gray-900 py-12 md:py-24">
-        <div className="container px-4">
+      <div className="bg-[var(--background-color)] py-12 md:py-24">
+        <div className=" px-4">
           <div className="text-center space-y-4">
-            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl">Get in Touch</h1>
+            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-[var(--primary-color)]">Get in Touch</h1>
             <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
               Have questions about FinanceFlow? We're here to help you manage your finances better.
             </p>
@@ -22,55 +22,54 @@ export default function Contact() {
       </div>
 
       {/* Contact Content */}
-      <div className="container px-4 py-12 md:py-24">
-        <div className="grid gap-12 md:grid-cols-2">
+      <div className=" px-4 py-12 md:py-24 h-full">
+      <div className="flex flex-col-reverse md:flex-row items-center justify-evenly gap-10">
           {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
-              <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
+          <div className="space-y-8 w-full md:w-[40%]">
+            <div className="rounded-lg border bg-card p-6 shadow-sm">
+              <h2 className="text-2xl font-bold mb-6 text-[var(--primary-color)]">Contact Information</h2>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 mt-1 text-primary" />
+                  <MapPin className="w-5 h-5 mt-1 text-primary text-[var(--primary-color)]" />
                   <div>
-                    <p className="font-medium">Our Location</p>
-                    <p className="text-gray-500">123 Finance Street</p>
-                    <p className="text-gray-500">San Francisco, CA 94105</p>
+                    <p className="font-medium text-[var(--primary-color)]">Our Location</p>
+                    <p className="text-gray-500">Lahore, Pakistan</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Mail className="w-5 h-5 mt-1 text-primary" />
+                  <Mail className="w-5 h-5 mt-1 text-primary text-[var(--primary-color)]" />
                   <div>
-                    <p className="font-medium">Email Us</p>
-                    <a href="mailto:support@financeflow.com" className="text-gray-500 hover:text-primary">
-                      support@financeflow.com
+                    <p className="font-medium text-[var(--primary-color)]">Email Us</p>
+                    <a href="mailto:karamworkmail07@gmail.com" className="text-gray-500 hover:text-primary">
+                    karamworkmail07@gmail.com
                     </a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Phone className="w-5 h-5 mt-1 text-primary" />
+                  <Phone className="w-5 h-5 mt-1 text-primary text-[var(--primary-color)]" />
                   <div>
-                    <p className="font-medium">Call Us</p>
-                    <a href="tel:+1234567890" className="text-gray-500 hover:text-primary">
-                      (123) 456-7890
+                    <p className="font-medium text-[var(--primary-color)]">Call Us</p>
+                    <a href="tel:+923261405470" className="text-gray-500 hover:text-primary">
+                      (+92) 326-1405470
                     </a>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div>
-              <h2 className="text-2xl font-bold mb-4">Support Hours</h2>
+            <div className="rounded-lg border bg-card p-6 shadow-sm">
+              <h2 className="text-2xl font-bold mb-4 text-[var(--primary-color)]">Support Hours</h2>
               <p className="text-gray-500 mb-2">Monday - Friday: 9:00 AM - 6:00 PM PST</p>
               <p className="text-gray-500">Weekend: 10:00 AM - 4:00 PM PST</p>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="rounded-lg border bg-card p-6 shadow-sm">
-            <h2 className="text-2xl font-bold mb-6">Send us a Message</h2>
+          <div className="rounded-lg border bg-card p-6 shadow-sm w-full sm:w-[40%]">
+            <h2 className="text-2xl font-bold mb-6 text-[var(--primary-color)]">Send us a Message</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
+                <label htmlFor="name" className="block text-sm font-medium mb-2 text-[var(--primary-color)]">
                   Name
                 </label>
                 <input
@@ -82,7 +81,7 @@ export default function Contact() {
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
+                <label htmlFor="email" className="block text-sm font-medium mb-2 text-[var(--primary-color)]">
                   Email
                 </label>
                 <input
@@ -94,7 +93,7 @@ export default function Contact() {
                 />
               </div>
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium mb-2">
+                <label htmlFor="subject" className="block text-sm font-medium mb-2 text-[var(--primary-color)]">
                   Subject
                 </label>
                 <input
@@ -106,7 +105,7 @@ export default function Contact() {
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
+                <label htmlFor="message" className="block text-sm font-medium mb-2 text-[var(--primary-color)]">
                   Message
                 </label>
                 <textarea
@@ -118,7 +117,7 @@ export default function Contact() {
               </div>
               <button
                 type="submit"
-                className="inline-flex items-center justify-center rounded-md bg-primary px-8 h-10 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
+                className="inline-flex items-center justify-center rounded-md bg-[var(--secondary-color)] px-8 h-10 text-sm font-medium text-[var(--primary-color)]  transition-transform duration-250 hover:scale-105"
               >
                 Send Message
               </button>
