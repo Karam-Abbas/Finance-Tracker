@@ -4,8 +4,8 @@ import {Sidebar} from './index.js'
 
 const In = () => {
   return (
-    <div className="flex flex-row items-center justify-between">
-    <Sidebar />
+    <div className="flex flex-row items-start justify-evenly h-full">
+    <Sidebar className="h-full flex-grow"/>
     <Outlet/>
     </div>
   )

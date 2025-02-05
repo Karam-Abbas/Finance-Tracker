@@ -13,5 +13,9 @@ export default {
     },
   },
   plugins: [],
+  corePlugins: {
+    backdropFilter: true,
+    backgroundOpacity: true,
+  },
 }
 }

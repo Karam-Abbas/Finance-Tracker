@@ -7,6 +7,7 @@ import {
   Incomes,
   Expenses,
   Entry,
+  Homepage
 } from "./pages/index.js";
 import "./index.css";
 import {
@@ -19,6 +20,7 @@ import {
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
+      <Route index element={<Homepage />} />
       <Route path="/entry" element={<Entry />} />
       <Route path="/in" element={<In />}>
         <Route path="dashboard" element={<Dashboard />} />

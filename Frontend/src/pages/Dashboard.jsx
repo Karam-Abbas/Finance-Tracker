@@ -28,7 +28,7 @@ const StatCard = ({ title, value, icon: Icon, trend }) => (
 
 // Utility component for min-max cards
 const MinMaxCard = ({ title, min, max }) => (
-  <div className="rounded-lg border bg-card text-card-foreground shadow-sm w-3/4 mx-auto my-4">
+  <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-1 w-3/4 mx-auto my-4">
     <div className="p-6 pb-2">
       <h3 className="text-lg font-semibold text-center">{title}</h3>
     </div>
@@ -124,7 +124,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="p-8 space-y-8 border rounded-lg w-full">
+    <div className="p-8 space-y-8 w-full h-full border-l">
       <div className="grid gap-4 md:grid-cols-3">
         <StatCard
           title="Net Balance"
@@ -157,9 +157,9 @@ const Dashboard = () => {
         max={formatAmount(maxExpense === -Infinity ? 0 : maxExpense)}
       />
 
-      <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
+      <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-1">
         <div className="p-6">
-          <History list={transactions} />
+          <History list={transactions}/>
         </div>
       </div>
     </div>

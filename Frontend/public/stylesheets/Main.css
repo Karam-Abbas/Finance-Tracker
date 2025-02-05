@@ -1,0 +1,37 @@
+:root {
+    /* Primary brand colors */
+    --primary-color: #2C3E50;    /* Deeper, more sophisticated blue-grey */
+    --secondary-color: #01d54b;  /* More muted, professional green */
+    --accent-color: #3B82F6;     /* Vibrant but not overwhelming blue */
+    
+    /* UI colors */
+    --placeholder-color: #64748B; /* Balanced grey for placeholders */
+    --main-background: #F8FAFC;   /* Slightly warmer off-white */
+    --containers-background: #FFFFFF; /* Pure white for containers */
+    --drop-shadow: rgba(0, 0, 0, 0.1); /* Softer shadow */
+    --danger: #EF4444;    /* Less harsh red */
+}
+
+[data-theme="dark"] {
+    /* Dark theme colors */
+    --primary-color: #E2E8F0;    /* High contrast for text */
+    --secondary-color: #34d379;  /* Brighter green for dark mode */
+    --accent-color: #818CF8;     /* Softer purple-blue */
+    
+    /* Dark UI colors */
+    --placeholder-color: #94A3B8; /* Lighter grey for better visibility */
+    --main-background: #0F172A;   /* Deep navy background */
+    --containers-background: #1E293B; /* Lighter navy for containers */
+    --drop-shadow: rgba(0, 0, 0, 0.25); /* Stronger shadow for depth */
+    --danger: #F87171;    /* Softer red for dark mode */
+}
+
+
+  header {
+    background: rgba(245, 245, 245, 0.3); /* Light theme */
+    backdrop-filter: blur(16px);
+  }
+  
+  [data-theme="dark"] header {
+    background: rgba(28, 31, 42, 0.3); /* Dark theme, using your --main-background color */
+  }
