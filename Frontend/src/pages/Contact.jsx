@@ -65,7 +65,7 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="rounded-lg border bg-card p-6 shadow-sm w-full sm:w-[40%]">
+          <div className="rounded-lg border bg-card p-6 shadow-sm w-full lg:w-[40%]">
             <h2 className="text-2xl font-bold mb-6 text-[var(--primary-color)]">Send us a Message</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>

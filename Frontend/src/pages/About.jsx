@@ -142,6 +142,6 @@ const team = [
     role: "Founder & CEO",
     description:
       "The one and only person behind this whole project.",
-    pic: "../../public/images/karam.jpeg",
+    pic: "../../public/images/karam.jpg",
   },
 ];

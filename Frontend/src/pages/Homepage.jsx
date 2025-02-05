@@ -1,6 +1,6 @@
 import { ArrowRight, BarChart2, DollarSign, Menu, PieChart, Wallet } from "lucide-react"
 import "../../public/stylesheets/LogIn.css"
-
+import { Link } from "react-router-dom"
 export default function Homepage() {
   return (
     <div className="flex min-h-screen flex-col bg-[var(--main-background)]">
@@ -19,10 +19,10 @@ export default function Homepage() {
               finance tracker.
             </p>
             <div className="flex flex-col gap-4 min-[400px]:flex-row">
-              <button className="inline-flex items-center justify-center rounded-md bg-[var(--secondary-color)] px-8 h-11 text-sm font-medium text-white shadow hover:opacity-90">
+              <Link to="/entry" className="inline-flex items-center justify-center rounded-md bg-[var(--secondary-color)] px-8 h-11 text-sm font-medium text-white shadow hover:opacity-90">
                 Start Tracking Free
                 <ArrowRight className="ml-2 h-4 w-4 bg-transparent" />
-              </button>
+              </Link>
             </div>
           </div>
         </section>
@@ -97,10 +97,10 @@ export default function Homepage() {
               <p className="max-w-[600px] text-[var(--placeholder-color)] md:text-xl">
                 Join our community and take the first step towards better financial management.
               </p>
-              <button className="inline-flex items-center justify-center rounded-md bg-[var(--secondary-color)] px-8 h-11 text-sm font-medium text-white shadow hover:opacity-90">
+              <Link to="/entry" className="inline-flex items-center justify-center rounded-md bg-[var(--secondary-color)] px-8 h-11 text-sm font-medium text-white shadow hover:opacity-90">
                 Get Started Free
                 <ArrowRight className="ml-2 h-4 w-4 bg-transparent" />
-              </button>
+              </Link>
             </div>
           </div>
         </section>
