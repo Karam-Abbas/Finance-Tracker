@@ -39,18 +39,16 @@ function Header({ isInRoute }) {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
             <ThemeSwitch />
-            <a
-              href="#features"
+            <Link to="/about"
               className="text-sm font-medium text-[var(--primary-color)] hover:text-[var(--accent-color)] hover:underline underline-offset-4"
             >
-              Features
-            </a>
-            <a
-              href="#testimonials"
+              About Us
+            </Link>
+            <Link to="/contact"
               className="text-sm font-medium text-[var(--primary-color)] hover:text-[var(--accent-color)] hover:underline underline-offset-4"
             >
-              Testimonials
-            </a>
+              Contact
+            </Link>
             <Link
               to="/entry"
               className="inline-flex items-center justify-center rounded-md bg-[var(--secondary-color)] px-4 h-9 text-sm font-medium text-white shadow hover:opacity-90"

@@ -1,6 +1,6 @@
 :root {
     /* Primary brand colors */
-    --primary-color: #2C3E50;    /* Deeper, more sophisticated blue-grey */
+    --primary-color: #000000;    /* Deeper, more sophisticated blue-grey */
     --secondary-color: #01d54b;  /* More muted, professional green */
     --accent-color: #3B82F6;     /* Vibrant but not overwhelming blue */
     
@@ -14,7 +14,7 @@
 
 [data-theme="dark"] {
     /* Dark theme colors */
-    --primary-color: #E2E8F0;    /* High contrast for text */
+    --primary-color: #ffffff;    /* High contrast for text */
     --secondary-color: #34d379;  /* Brighter green for dark mode */
     --accent-color: #818CF8;     /* Softer purple-blue */
     

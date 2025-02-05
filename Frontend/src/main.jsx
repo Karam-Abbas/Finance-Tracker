@@ -7,7 +7,9 @@ import {
   Incomes,
   Expenses,
   Entry,
-  Homepage
+  Homepage,
+  Contact,
+  About,
 } from "./pages/index.js";
 import "./index.css";
 import {
@@ -21,6 +23,8 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index element={<Homepage />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/about" element={<About />} />
       <Route path="/entry" element={<Entry />} />
       <Route path="/in" element={<In />}>
         <Route path="dashboard" element={<Dashboard />} />
