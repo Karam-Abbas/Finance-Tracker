@@ -45,19 +45,27 @@ export default function About() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="rounded-lg border bg-card p-6 shadow-sm">
-              <h3 className="text-3xl font-bold mb-2 text-[var(--primary-color)]">10K+</h3>
+              <h3 className="text-3xl font-bold mb-2 text-[var(--primary-color)]">
+                10K+
+              </h3>
               <p className="text-gray-500">Active Users</p>
             </div>
             <div className="rounded-lg border bg-card p-6 shadow-sm">
-              <h3 className="text-3xl font-bold mb-2 text-[var(--primary-color)]">$5M+</h3>
+              <h3 className="text-3xl font-bold mb-2 text-[var(--primary-color)]">
+                $5M+
+              </h3>
               <p className="text-gray-500">Expenses Tracked</p>
             </div>
             <div className="rounded-lg border bg-card p-6 shadow-sm">
-              <h3 className="text-3xl font-bold mb-2 text-[var(--primary-color)]">15+</h3>
+              <h3 className="text-3xl font-bold mb-2 text-[var(--primary-color)]">
+                15+
+              </h3>
               <p className="text-gray-500">Countries</p>
             </div>
             <div className="rounded-lg border bg-card p-6 shadow-sm">
-              <h3 className="text-3xl font-bold mb-2 text-[var(--primary-color)]">4.8</h3>
+              <h3 className="text-3xl font-bold mb-2 text-[var(--primary-color)]">
+                4.8
+              </h3>
               <p className="text-gray-500">User Rating</p>
             </div>
           </div>
@@ -73,7 +81,9 @@ export default function About() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-lg border bg-card p-6 shadow-sm">
               <Users className="h-12 w-12 mb-4 text-primary stroke-[var(--primary-color)]" />
-              <h3 className="font-bold mb-2 text-[var(--primary-color)]">Accessibility</h3>
+              <h3 className="font-bold mb-2 text-[var(--primary-color)]">
+                Accessibility
+              </h3>
               <p className="text-gray-500">
                 We believe everyone should have access to quality financial
                 tools, regardless of their income.
@@ -81,7 +91,9 @@ export default function About() {
             </div>
             <div className="rounded-lg border bg-card p-6 shadow-sm">
               <Heart className="h-12 w-12 mb-4 text-primary stroke-[var(--primary-color)]" />
-              <h3 className="font-bold mb-2 text-[var(--primary-color)]">Simplicity</h3>
+              <h3 className="font-bold mb-2 text-[var(--primary-color)]">
+                Simplicity
+              </h3>
               <p className="text-gray-500">
                 Managing money shouldn't be complicated. We keep our tools
                 simple and intuitive.
@@ -89,7 +101,9 @@ export default function About() {
             </div>
             <div className="rounded-lg border bg-card p-6 shadow-sm">
               <Award className="h-12 w-12 mb-4 text-primary stroke-[var(--primary-color)]" />
-              <h3 className="font-bold mb-2 text-[var(--primary-color)]">Excellence</h3>
+              <h3 className="font-bold mb-2 text-[var(--primary-color)]">
+                Excellence
+              </h3>
               <p className="text-gray-500">
                 We strive to provide the best possible experience and
                 continuously improve our platform.
@@ -97,7 +111,9 @@ export default function About() {
             </div>
             <div className="rounded-lg border bg-card p-6 shadow-sm">
               <Wallet className="h-12 w-12 mb-4 text-primary text-[var(--primary-color)]" />
-              <h3 className="font-bold mb-2 text-[var(--primary-color)]">Empowerment</h3>
+              <h3 className="font-bold mb-2 text-[var(--primary-color)]">
+                Empowerment
+              </h3>
               <p className="text-gray-500">
                 We empower users to take control of their finances and achieve
                 their goals.
@@ -120,12 +136,18 @@ export default function About() {
             >
               <div className="w-24 h-24 rounded-full bg-gray-200 mx-auto mb-4">
                 <img
-                  src="../../public/images/karam.jpg"
+                  src="/images/karam.jpg"
+                  alt="Developer Karam"
                   className="w-full h-full rounded-full object-cover"
                   loading="lazy"
+                  onError={(e) => {
+                    e.target.src = "/images/fallback-avatar.png"; // Optional fallback
+                  }}
                 />
               </div>
-              <h3 className="font-bold mb-1 text-[var(--primary-color)]">{member.name}</h3>
+              <h3 className="font-bold mb-1 text-[var(--primary-color)]">
+                {member.name}
+              </h3>
               <p className="text-gray-500 mb-2">{member.role}</p>
               <p className="text-sm text-gray-500">{member.description}</p>
             </div>
@@ -140,7 +162,6 @@ const team = [
   {
     name: "Karam Abbas",
     role: "Founder & CEO",
-    description:
-      "The one and only person behind this whole project.",
+    description: "The one and only person behind this whole project.",
   },
 ];
