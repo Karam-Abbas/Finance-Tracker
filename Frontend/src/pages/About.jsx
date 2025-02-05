@@ -120,7 +120,7 @@ export default function About() {
             >
               <div className="w-24 h-24 rounded-full bg-gray-200 mx-auto mb-4">
                 <img
-                  src={member.pic}
+                  src="../../public/images/karam.jpg"
                   alt={member.name}
                   className="w-full h-full rounded-full object-cover"
                 />
@@ -142,6 +142,5 @@ const team = [
     role: "Founder & CEO",
     description:
       "The one and only person behind this whole project.",
-    pic: "../../public/images/karam.jpg",
   },
 ];
