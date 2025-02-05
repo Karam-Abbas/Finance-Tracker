@@ -48,7 +48,7 @@ function Footer() {
           <ul className="space-y-2">
             {section.links.map((link, linkIndex) => (
               <li key={linkIndex}>
-                <a href={link.href} className="text-sm text-[var(--placeholder-color)] hover:text-[var(--accent-color)] hover:underline">
+                <a href={link.href} className="text-sm text-[var(--primary-color)] hover:text-[var(--accent-color)] hover:underline">
                   {link.name}
                 </a>
               </li>

@@ -125,7 +125,7 @@ const Dashboard = () => {
 
   return (
     <div
-      className="p-8 space-y-8 w-full h-full border-l border-[var(--placeholder-color)] 
+      className="p-8 space-y-8 w-full h-full
      text-[var(--primary-color)]"
     >
       <div className="grid gap-4 md:grid-cols-3 bg-transparent ">

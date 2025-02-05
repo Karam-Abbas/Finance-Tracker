@@ -80,8 +80,8 @@ const Incomes = () => {
       {/* Total Income Card */}
       <div className="mb-8 rounded-lg bg-transparent p-6 shadow-sm border border-gray-200">
         <div className="text-center">
-          <span className="text-sm text-gray-500">Total Income</span>
-          <div className="text-3xl font-bold mt-1">
+          <span className="text-sm text-gray-500 ">Total Income</span>
+          <div className="text-3xl font-bold mt-1 text-[var(--primary-color)]">
             Rs {formatAmount(totalIncome)}
           </div>
         </div>
@@ -124,7 +124,7 @@ const Incomes = () => {
                 name="date"
                 value={formData.date}
                 onChange={handleChange}
-                className="w-full rounded-md border border-gray-200 px-4 py-2.5 text-sm placeholder:text-gray-400 focus:border-gray-900 focus:outline-none"
+                className="w-full rounded-md border border-gray-200 px-4 py-2.5 text-sm placeholder:text-gray-400 focus:border-gray-900 focus:outline-none text-[var(--primary-color)]"
               />
             </div>
 
@@ -137,7 +137,7 @@ const Incomes = () => {
                 name="category"
                 value={formData.category}
                 onChange={handleChange}
-                className="rounded-md border border-gray-200 px-4 py-2.5 text-sm focus:border-gray-900 focus:outline-none"
+                className="rounded-md border border-gray-200 px-4 py-2.5 text-sm focus:border-gray-900 focus:outline-none text-[var(--primary-color)]"
               >
                 <option value="Pocket Money">Pocket Money</option>
                 <option value="Freelance">Freelance</option>
@@ -165,7 +165,7 @@ const Incomes = () => {
             <button
               type="submit"
               disabled={loading}
-              className="inline-flex w-full items-center justify-center rounded-md bg-gray-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-gray-800 focus:outline-none disabled:opacity-50"
+              className="inline-flex w-full items-center justify-center rounded-md bg-[var(--secondary-color)] px-4 py-2.5 text-sm font-medium text-white hover:bg-gray-800 focus:outline-none disabled:opacity-50"
             >
               {loading ? (
                 "Submitting..."
@@ -179,7 +179,7 @@ const Incomes = () => {
         </div>
 
         {/* Transactions Section */}
-        <div className="rounded-lg bg-transparent p-6 shadow-sm border border-gray-200 w-full">
+        <div className="rounded-lg bg-transparent p-6 shadow-sm border border-gray-200 w-full text-[var(--primary-color)]">
           <MiniHistory list={transactions} ans="+" />
         </div>
       </div>

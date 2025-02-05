@@ -7,7 +7,7 @@ function Header({ isInRoute }) {
   return (
     <>
       <header
-        className="sticky top-0 z-50 w-full shadow-md"
+        className="sticky top-0 z-50 w-full shadow-md min-w-0"
         style={{
           backgroundColor: "var(--containers-background)",
           backdropFilter: "blur(16px)",

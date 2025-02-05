@@ -116,13 +116,13 @@ const Expenses = () => {
             </div>
 
             <div>
-              <div className="text-sm text-gray-600 m-2">Date</div>
+              <div className="text-sm text-gray-600  m-2">Date</div>
               <input
                 type="date"
                 name="date"
                 value={formData.date}
                 onChange={handleChange}
-                className="w-full rounded-md border border-gray-200 px-4 py-2.5 text-sm placeholder:text-gray-400 focus:border-gray-900 focus:outline-none"
+                className="w-full rounded-md border text-[var(--primary-color)] border-gray-200 px-4 py-2.5 text-sm placeholder:text-gray-400 focus:border-gray-900 focus:outline-none"
               />
             </div>
 
@@ -135,7 +135,7 @@ const Expenses = () => {
                 name="category"
                 value={formData.category}
                 onChange={handleChange}
-                className="rounded-md border border-gray-200 px-4 py-2.5 text-sm focus:border-gray-900 focus:outline-none"
+                className="rounded-md border border-gray-200 px-4 py-2.5 text-[var(--primary-color)] text-sm focus:border-gray-900 focus:outline-none"
               >
                 <option value="Emergency">Emergency</option>
                 <option value="Home Expense">Home Expense</option>
