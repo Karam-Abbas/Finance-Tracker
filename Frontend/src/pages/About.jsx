@@ -121,8 +121,8 @@ export default function About() {
               <div className="w-24 h-24 rounded-full bg-gray-200 mx-auto mb-4">
                 <img
                   src="../../public/images/karam.jpg"
-                  alt={member.name}
                   className="w-full h-full rounded-full object-cover"
+                  loading="lazy"
                 />
               </div>
               <h3 className="font-bold mb-1 text-[var(--primary-color)]">{member.name}</h3>
