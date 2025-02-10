@@ -136,7 +136,7 @@ export default function About() {
             >
               <div className="w-24 h-24 rounded-full bg-gray-200 mx-auto mb-4">
                 <img
-                  src="/images/karam.jpg"
+                  src="../../public/images/karam.jpg"
                   alt="Developer Karam"
                   className="w-full h-full rounded-full object-cover"
                   loading="lazy"

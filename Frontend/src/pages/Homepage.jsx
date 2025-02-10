@@ -1,5 +1,5 @@
 import { ArrowRight, BarChart2, DollarSign, Menu, PieChart, Wallet } from "lucide-react"
-import "../../public/stylesheets/LogIn.css"
+import "../../public/stylesheets/Main.css"
 import { Link } from "react-router-dom"
 export default function Homepage() {
   return (
@@ -28,7 +28,7 @@ export default function Homepage() {
         </section>
 
         {/* Features Section */}
-        <section id="features" className="px-4 py-20 md:py-20 space-y-12">
+        <section id="features" className="px-4 py-20 md:py-20 space-y-12 border-t border-gray-400">
           <div className="text-center space-y-4">
             <h2 className="text-3xl font-bold tracking-tighter text-[var(--primary-color)] sm:text-4xl md:text-5xl">Everything You Need</h2>
             <p className="max-w-[600px] mx-auto text-[var(--placeholder-color)]">
@@ -53,8 +53,8 @@ export default function Homepage() {
                 description: "Get insights into your spending with clear and intuitive charts and graphs."
               }
             ].map((feature, index) => (
-              <div key={index} style={{ border: '1px solid var(--placeholder-color)' }} className="bg-[var(--containers-background)] shadow-sm">
-                <div className="p-6 space-y-2">
+              <div key={index}  className="shadow-md rounded-lg border border-gray-300">
+                <div className="p-6 space-y-2 rounded-lg">
                   {feature.icon}
                   <h3 className="text-lg font-semibold text-[var(--primary-color)]">{feature.title}</h3>
                   <p className="text-sm text-[var(--placeholder-color)]">{feature.description}</p>
@@ -65,7 +65,7 @@ export default function Homepage() {
         </section>
 
         {/* Testimonials Section */}
-        <section id="testimonials" style={{ borderTop: '1px solid var(--placeholder-color)' }}>
+        <section id="testimonials"className=" border-t border-gray-400">
           <div className="px-4 py-24 md:py-32 space-y-12">
             <div className="text-center space-y-4">
               <h2 className="text-3xl font-bold tracking-tighter text-[var(--primary-color)] sm:text-4xl md:text-5xl">What Our Users Say</h2>
@@ -75,11 +75,11 @@ export default function Homepage() {
             </div>
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {testimonials.map((testimonial, index) => (
-                <div key={index} style={{ border: '1px solid var(--placeholder-color)' }} className="bg-[var(--containers-background)] shadow-sm">
-                  <div className="p-6 space-y-2">
+                <div key={index} className="bg-[var(--containers-background)] shadow-md border border-gray-300 rounded-lg">
+                  <div className="p-6 space-y-2 rounded-lg">
                     <h3 className="font-semibold text-[var(--primary-color)]">{testimonial.name}</h3>
                     <p className="text-sm text-[var(--accent-color)]">{testimonial.role}</p>
-                    <p className="text-sm text-[var(--placeholder-color)] pt-2">"{testimonial.quote}"</p>
+                    <p className="text-sm text-[var(--placeholder-color)] pt-2">"{testimonial.quote}"</p> 
                   </div>
                 </div>
               ))}
